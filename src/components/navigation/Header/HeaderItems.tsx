@@ -1,7 +1,6 @@
 import React, {memo} from "react";
 import {HeaderButtonTypes} from "../../ComponentInterfaces";
 
-
 const headerButtons: HeaderButtonTypes[] = [
   {
     href: "#home",
