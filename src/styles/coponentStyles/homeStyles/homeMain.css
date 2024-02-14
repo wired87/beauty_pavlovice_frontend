@@ -1,0 +1,37 @@
+
+
+
+
+
+
+.sectionMain {
+  width: 100%;
+  height: auto;
+  padding-top: 0;
+  padding-bottom: 100px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.sectionMain h2 {
+  margin-bottom: 60px;
+}
+
+.imageContainer {
+  position: relative;
+  padding: 0;
+  overflow: hidden;
+  min-height: 550px;
+  height: 40vh;
+  border: 1px solid red;
+  margin: 50px 5vw;
+}
+.titleImage {
+  position: relative;
+  object-fit: contain;
+  width: 90%;
+  max-height: 500px;
+  margin: 50px 5vw;
+  object-position: 40% 40%;
+
+}

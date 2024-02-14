@@ -1,0 +1,8 @@
+.infoMain {
+  display: flex;
+  flex-direction: column;
+}
+
+.openingUl {
+  list-style: none;
+}

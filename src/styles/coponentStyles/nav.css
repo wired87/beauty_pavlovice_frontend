@@ -1,0 +1,148 @@
+.searchForm {
+  margin: 0 300px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: row;
+  border: 1px solid red;
+}
+
+.formInput {
+  border-radius: 6px;
+  padding: 6px 5px;
+  border: none;
+}
+.formInput:hover {
+  outline: none;
+}
+.formInput:focus {
+  outline: none;
+}
+
+.headerButtonSearch {
+  border-radius: 11px;
+  background-color: black;
+  opacity: .6;
+  color: #646cff;
+  padding: 7px 19px;
+  margin-left: 20px;
+}
+.headerButtonSearch:hover{
+  box-shadow: 0 0 20px #646cff;
+  color: white;
+  opacity: .8;
+}
+
+.darkBg {
+  background-color: #212529;
+}
+
+.footerMainContainer {
+  width: 100%;
+  height: 300px;
+  background-color: rgb(247,212,212);
+}
+
+.footerAnchor {
+  color: white;
+  margin-bottom: 10px;
+  text-decoration: none;
+}
+
+.footerMain {
+  width: 100%;
+}
+
+/* HEADER */
+.headerContainer {
+  width: 100%;
+  position: relative;
+  top: 0;
+  height: 100px;
+  background-color: rgb(247,212,212);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.headerMain {
+  width: 100vh
+}
+
+.headerButtonUl {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 60%;
+}
+.navListItem {
+  margin: 0 50px;
+  position: relative;
+  padding: 0 20px;
+  height: 60px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+.headerAnchorWrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.headerListAnchor {
+  text-decoration: none;
+  color: white;
+  position: absolute;
+  font-weight: bold;
+  font-size: 15px;
+  padding: 5px 10px;
+}
+.headerListAnchor:hover {
+  font-size: 16px;
+  color: white;
+}
+@media (max-width: 660px) {
+  .headerButtonUl {
+    padding: 0;
+    width: 100%;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+  }
+  .navListItem {
+    margin: 0;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .headerAnchorWrap {
+    margin: 0;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: flex-start;
+    left: 0;
+    position: absolute;
+  }
+}
+
+
+
+.logo {
+  position: absolute;
+  height: 300%;
+}
+
+/* LOGO CONTAINER */
+.amz_partnerDiv {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}

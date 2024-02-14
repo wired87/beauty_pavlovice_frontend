@@ -1,0 +1,5 @@
+
+# integrate from nom to yarn
+npm i -g yarn
+
+
