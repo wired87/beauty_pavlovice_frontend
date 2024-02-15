@@ -1,5 +1,7 @@
 import React, {memo} from "react";
 import {HeaderButtonTypes} from "../../ComponentInterfaces";
+import NavAnchor from "../NavAnchor";
+import "../../../styles/main.css";
 
 const headerButtons: HeaderButtonTypes[] = [
   {
@@ -27,18 +29,15 @@ const headerButtons: HeaderButtonTypes[] = [
     title: "Home",
     className: "current"
   }
-]
+];
+
 const HeaderItems: React.FC = () => {
 
   const headerItems = () => {
     return headerButtons.map((item: HeaderButtonTypes, index:number) => {
       return(
         <li className={"navListItem"} key={index}>
-          <div className={"fullWidthHeight headerAnchorWrap"}>
-            <a className="headerListAnchor" href={item.href}>
-              {item.title}
-            </a>
-          </div>
+          <NavAnchor customClass={"blackColor"} key={index} title={item.title} href={item.href} />
         </li>
       )
     })

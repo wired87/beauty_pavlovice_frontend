@@ -6,18 +6,24 @@ import Footer from "./components/navigation/Footer/Footer";
 import Home from "./screens/Home";
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import MainContextProvider from "./Context/ContextProvider/MainContextProvider";
+import UpperLinkBar from "./components/Home/UpperLinkBar";
 
-const App :React.FC= () => {
+const App:React.FC= () => {
 
   return(
-    <Router>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="*" element={<Home />} />
-      </Routes>
-      <Footer/>
-    </Router>
+    <MainContextProvider>
+      <Router>
+        <UpperLinkBar />
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="*" element={<Home />} />
+        </Routes>
+        <Footer/>
+      </Router>
+    </MainContextProvider>
+
   );
 }
 

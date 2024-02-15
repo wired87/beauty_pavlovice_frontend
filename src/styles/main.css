@@ -21,6 +21,23 @@
   background-color: rgb(247,212,212);
 }
 
+.whiteColor {
+  color: white;
+  margin: 0 auto;
+}
+
+.textStart {
+  text-align: start;
+}
+.textCenter {
+  text-align: center;
+}
+
+.textEnd {
+  text-align: end;
+}
+
+
 .dFlex {
   display: flex;
 }
@@ -34,7 +51,26 @@
 .flexColumn {
   flex-direction: column;
 }
-
+.flexRow {
+  flex-direction: row;
+}
 .padding0 {
   padding: 0;
 }
+.paddingTop50 {
+  padding-top: 50px;
+}
+
+
+.borderLeft {
+  border-left: 1px solid rgba(0,0,0,.5);
+}
+
+.borderRight {
+  border-right: 1px solid rgba(0,0,0,.5);
+}
+
+.borderBottom {
+  border-bottom: 1px solid rgba(0,0,0,.5);
+}
+

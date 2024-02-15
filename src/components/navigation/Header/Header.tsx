@@ -25,12 +25,10 @@ const Header: React.FC = () => {
 
 
 
-
-
   const transformHeader = () => {
     const width:number = WindowWidth();
     console.log("width:", width);
-    if (width > 660) {
+    if (width > 960) {
       return(
         <HeaderItems />
       )
@@ -45,7 +43,7 @@ const Header: React.FC = () => {
   //   background-color: rgb(247,212,212);
   return (
     <>
-      <header id="home" className={"headerContainer d-flex justify-content-center align-items-center flex-row border"}>
+      <header id="home" className={"headerContainer d-flex justify-content-center align-items-center flex-row "}>
         <img src={logoNoBg} className={"logo"} alt="logoNoBg.png"/>
         {
           transformHeader()

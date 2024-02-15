@@ -1,8 +1,28 @@
 .infoMain {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
-
+.infoChild {
+  justify-content: center;
+  align-items: flex-start;
+}
 .openingUl {
   list-style: none;
+  gap: 30px;
 }
+
+.colorContainer {
+  min-width: 500px;
+  width: 80%;
+  height: 100%;
+
+}
+
+
+
+.openingTimeBlock {
+  height: 100%;
+  width: 200px
+}
+

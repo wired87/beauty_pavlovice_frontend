@@ -17,7 +17,6 @@ const OffcanvasBootstrap: React.FC<OffcanvasTypes> = (
   return(
     <Offcanvas backdropClassName={"pinkBg"} show={showModal} onHide={handleCloseModal} placement={"end"} name={"end"}>
       <Offcanvas.Header className={"pinkBg flexCenter "} closeButton>
-        <Offcanvas.Title className={"pinkBg flexCenter"}>Menu</Offcanvas.Title>
       </Offcanvas.Header>
       <Offcanvas.Body className={"pinkBg flexCenter flexColumn fullWidthHeight"}>
         <HeaderItems />

@@ -6,4 +6,4 @@ const Component: React.FC = () => {
   );
 }
 
-export default memo(Component)
+export default memo(Component);
