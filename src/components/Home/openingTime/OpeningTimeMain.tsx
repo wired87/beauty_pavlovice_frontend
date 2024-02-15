@@ -5,7 +5,6 @@ import {OpeningTimeTypes} from "../../ComponentInterfaces";
 import OpeningTimeBlock from "./OpeningTimeSingle";
 import Font from "react-font";
 
-
 const openingTimeBlock01: OpeningTimeTypes[] = [
   {
     day: "Montag",
@@ -44,13 +43,13 @@ const openingTimeBlock02: OpeningTimeTypes[] = [
 const OpeningTimeMain: React.FC = (
 
 ) => {
+
   return(
-    <section id={"#openingTimeSection"} className={"flexColumn sectionMain"}>
+    <section id={"openingTimeSection"} className={"flexColumn sectionMain"}>
       <div className={"flexColumn colorContainer flexCenter pinkBg paddingTop50"}>
         <Font family='Abel'>
           <h2 >Unsere Öffnungszeiten</h2>
         </Font>
-
         <div className={"infoMain"}>
           <img src="" alt=""/>
           <div className={"flexCenter flexRow infoChild"}>

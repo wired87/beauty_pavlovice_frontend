@@ -4,6 +4,7 @@ import {NavAnchorInterface} from "./NavInterfaces";
 import Font from "react-font";
 import "../../styles/coponentStyles/nav.css";
 import "../../styles/main.css";
+
 const NavAnchor: React.FC<NavAnchorInterface> = (
   {
     title,
@@ -15,9 +16,8 @@ const NavAnchor: React.FC<NavAnchorInterface> = (
   return(
     <div className={"fullWidthHeight  headerAnchorWrap"}>
       <Font family='Abel'>
-        <a className={`headerListAnchor ${customClass}`} href={href}>
-          {title}
-        </a>
+        <a href={href} className={`headerListAnchor ${customClass}`}
+        >{title}</a>
       </Font>
     </div>
   );
