@@ -3,19 +3,22 @@ import "../styles/main.css";
 import React, {memo} from "react";
 import HeaderItems from "./navigation/Header/HeaderItems";
 
-interface OffcanvasTypes {
-  showModal: boolean;
-  handleCloseModal: () => void;
+interface OffC {
+  show: boolean;
+  updateShow: (value:boolean) => void;
 }
-const OffcanvasBootstrap: React.FC<OffcanvasTypes> = (
+
+const OffcanvasBootstrap: React.FC<OffC> = (
   {
-    showModal,
-    handleCloseModal
+    updateShow,
+    show
   }
 ) => {
 
+  //const {show, updateShow} = useContext(MainContext);
+
   return(
-    <Offcanvas backdropClassName={"pinkBg"} show={showModal} onHide={handleCloseModal} placement={"end"} name={"end"}>
+    <Offcanvas backdropClassName={"pinkBg"} show={show} onHide={() => updateShow(false)} placement={"end"} name={"end"}>
       <Offcanvas.Header className={"pinkBg flexCenter "} closeButton>
       </Offcanvas.Header>
       <Offcanvas.Body className={"pinkBg flexCenter flexColumn fullWidthHeight"}>

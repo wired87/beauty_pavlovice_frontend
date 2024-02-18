@@ -8,6 +8,7 @@ import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MainContextProvider from "./Context/ContextProvider/MainContextProvider";
 import UpperLinkBar from "./components/Home/UpperLinkBar";
+import Appointment from "./screens/Appointment/Appointment";
 
 const App:React.FC= () => {
 
@@ -19,8 +20,8 @@ const App:React.FC= () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="*" element={<Home />} />
+          <Route path="termin" element={<Appointment />} />
         </Routes>
-        <Footer/>
       </Router>
     </MainContextProvider>
 
@@ -31,7 +32,9 @@ export default App;
 
 
 /*
-<Route path="termin" element={<Termin />} />
+<Route path="termin" element={<Appointment />} />
 <Route path="imprint" element={<Info />} />
 <Route path="*" element={<NotFound />} />
+        <Footer/>
+
  */

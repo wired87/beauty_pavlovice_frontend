@@ -15,8 +15,8 @@ const headerButtons: HeaderButtonTypes[] = [
     className: "current"
   },
   {
-    href: "#termin",
-    title: "Termin",
+    href: "/termin",
+    title: "Termin vereinbaren",
     className: "current"
   },
   {

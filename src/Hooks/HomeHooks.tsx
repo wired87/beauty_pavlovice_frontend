@@ -6,9 +6,18 @@ export const useUpperLinkBarVisible = () => {
 
   const updateLinkBarVisible = (value:boolean) => setUpperLinkBarVisible(value);
 
-  useEffect(() => {
-    console.log("upperLinkBarVisible", upperLinkBarVisible)
-  }, [upperLinkBarVisible]);
 
   return {upperLinkBarVisible, setUpperLinkBarVisible, updateLinkBarVisible}
+}
+
+export const useShowModal = () => {
+  const [show, setShow] = useState<boolean>(false);
+
+  const updateShow = (value:boolean) => setShow(value);
+
+  useEffect(() => {
+    console.log("show updated:", show);
+  }, [show]);
+
+  return {show, setShow, updateShow}
 }

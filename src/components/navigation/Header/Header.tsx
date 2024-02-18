@@ -1,4 +1,4 @@
-import React, {memo, useState} from "react";
+import React, {memo, useContext} from "react";
 // <ParticlesBg type="circle" bg={true} />
 import "../../../styles/main.css";
 import "../../../styles/coponentStyles/nav.css";
@@ -8,22 +8,14 @@ import {WindowWidth} from "../../../functions/WindowWidth";
 import OffcanvasBootstrap from "../../Offcanvas";
 import HeaderItems from "./HeaderItems";
 import { RxHamburgerMenu } from "react-icons/rx";
+import {MainContext} from "../../../Context/MainContext";
 
 
 
 
 const Header: React.FC = () => {
-  const [showModal, setShowModal] = useState<boolean>(false);
 
-  const handleCloseModal = () => {
-    setShowModal(false);
-  }
-
-  const handleOpenModal = () => {
-    setShowModal(true);
-  }
-
-
+  const {show, updateShow} = useContext(MainContext);
 
   const transformHeader = () => {
     const width:number = WindowWidth();
@@ -34,13 +26,12 @@ const Header: React.FC = () => {
       )
     }
     return(
-      <button className={"offcanvasToggleButton flexCenter"} onClick={handleOpenModal}>
+      <button className={"offcanvasToggleButton flexCenter"} onClick={() => updateShow(true)}>
         <RxHamburgerMenu size={30}/>
       </button>
     )
   }
 
-  //   background-color: rgb(247,212,212);
   return (
     <>
       <header id="home" className={"headerContainer d-flex justify-content-center align-items-center flex-row "}>
@@ -61,7 +52,7 @@ const Header: React.FC = () => {
         </p>
 
       </header>
-      <OffcanvasBootstrap showModal={showModal} handleCloseModal={handleCloseModal}/>
+      <OffcanvasBootstrap show={show} updateShow={updateShow}/>
     </>
   );
 }

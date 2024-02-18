@@ -9,8 +9,8 @@ import NavAnchor from "../navigation/NavAnchor";
 import { IoCloseOutline } from "react-icons/io5";
 
 // STRINGS
-const title:string = "Buche einen Termin!";
-const href: string = "#"
+const title:string = "Buche einen Appointment!";
+const href: string = "#";
 
 const UpperLinkBar: React.FC = () => {
 
@@ -26,6 +26,7 @@ const UpperLinkBar: React.FC = () => {
       </div>
     );
   }
+  return <></>
 }
 
 export default memo(UpperLinkBar);

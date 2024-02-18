@@ -1,7 +1,7 @@
 import React, {memo} from "react";
 import {MainContextProviderInterface} from "../Interfaces";
 import {MainContext} from "../MainContext";
-import {useUpperLinkBarVisible} from "../../Hooks/HomeHooks";
+import {useShowModal, useUpperLinkBarVisible} from "../../Hooks/HomeHooks";
 
 const MainContextProvider: React.FC<MainContextProviderInterface> = (
   {
@@ -9,15 +9,23 @@ const MainContextProvider: React.FC<MainContextProviderInterface> = (
   }
 ) => {
 
-
   const {
     upperLinkBarVisible,
     updateLinkBarVisible
-  } = useUpperLinkBarVisible()
+  } = useUpperLinkBarVisible();
+
+  const {
+    show,
+    setShow,
+    updateShow
+  } = useShowModal();
 
   const elements = {
     upperLinkBarVisible,
-    updateLinkBarVisible
+    updateLinkBarVisible,
+    show,
+    setShow,
+    updateShow
   }
 
   return(
