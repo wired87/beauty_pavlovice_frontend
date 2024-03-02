@@ -1,16 +1,16 @@
-import React, {memo} from "react";
-import {HeaderButtonTypes} from "../../ComponentInterfaces";
+import React, { memo } from "react";
+import { HeaderButtonTypes } from "../../ComponentInterfaces";
 import NavAnchor from "../NavAnchor";
 import "../../../styles/main.css";
 
 const headerButtons: HeaderButtonTypes[] = [
   {
-    href: "#home",
+    href: "/",
     title: "Home",
     className: "current"
   },
   {
-    href: "#openingTimeSection",
+    href: "*",
     title: "Öffnungszeiten",
     className: "current"
   },
@@ -20,22 +20,22 @@ const headerButtons: HeaderButtonTypes[] = [
     className: "current"
   },
   {
-    href: "#home",
-    title: "Home",
+    href: "Category",
+    title: "Kategorie",
     className: "current"
   },
-  {
-    href: "#home",
-    title: "Home",
-    className: "current"
-  }
+  // {
+  //   href: "#home",
+  //   title: "Home",
+  //   className: "current"
+  // }
 ];
 
 const HeaderItems: React.FC = () => {
 
   const headerItems = () => {
-    return headerButtons.map((item: HeaderButtonTypes, index:number) => {
-      return(
+    return headerButtons.map((item: HeaderButtonTypes, index: number) => {
+      return (
         <li className={"navListItem"} key={index}>
           <NavAnchor customClass={"blackColor"} key={index} title={item.title} href={item.href} />
         </li>
@@ -43,7 +43,7 @@ const HeaderItems: React.FC = () => {
     })
   }
 
-  return(
+  return (
     <ul className="headerButtonUl">
       {
         headerItems()

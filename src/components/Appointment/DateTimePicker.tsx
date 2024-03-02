@@ -3,8 +3,8 @@ import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
-import {memo, useEffect} from "react";
-import {useLoading, useSuccessLoading} from "../../Hooks/Primary";
+import { memo, useEffect } from "react";
+import { useLoading, useSuccessLoading } from "../../Hooks/Primary";
 import CalendarLoading from "../../screens/Appointment/CalendarLoading";
 
 // vars
@@ -20,12 +20,12 @@ const BasicDateTimePicker: React.FC = () => {
     try {
 
       updateSuccessLoading(true);
-    }catch(e:unknown) {
+    } catch (e: unknown) {
       if (e instanceof Error) {
         console.log("COULD NOT LOAD THE CALENDAR DATA");
         updateSuccessLoading(false);
       }
-    }finally {
+    } finally {
       updateLoading(false);
     }
   }

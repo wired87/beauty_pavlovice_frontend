@@ -1,7 +1,7 @@
-import React, {memo} from "react";
+import React, { memo } from "react";
 import "../../../styles/main.css";
 import "../../../styles/coponentStyles/homeStyles/homeMain.css";
-import {OpeningTimeTypes} from "../../ComponentInterfaces";
+import { OpeningTimeTypes } from "../../ComponentInterfaces";
 import OpeningTimeBlock from "./OpeningTimeSingle";
 import Font from "react-font";
 
@@ -39,25 +39,30 @@ const openingTimeBlock02: OpeningTimeTypes[] = [
   },
 ]
 
-
 const OpeningTimeMain: React.FC = (
+
 
 ) => {
 
-  return(
+  return (
     <section id={"openingTimeSection"} className={"flexColumn sectionMain"}>
-      <div className={"flexColumn colorContainer flexCenter pinkBg paddingTop50"}>
-        <Font family='Abel'>
-          <h2 >Unsere Öffnungszeiten</h2>
-        </Font>
-        <div className={"infoMain"}>
-          <img src="" alt=""/>
-          <div className={"flexCenter flexRow infoChild"}>
-            <div className={"openingTimeBlock dFlex flexColumn"}>
-              <OpeningTimeBlock itemList={openingTimeBlock01}/>
-            </div>
-            <div className={"openingTimeBlock dFlex flexColumn"}>
-              <OpeningTimeBlock itemList={openingTimeBlock02}/>
+      <div className="container demo-bg">
+        <div className="row pinkBg">
+
+          <div className="col-sm-4"></div>
+          <div className="col-sm-4 ">
+            <div className="business-hours opening-hours  ">
+              <h2 className="title ">Opening Hours</h2>
+              {openingTimeBlock01.map((item) => (
+                <li key={item.day} className="text-white">
+                  {item.day} <span className="pull-right p-1 flex-row">{item.time}</span>
+                </li>
+              ))}
+              {openingTimeBlock02.map((item) => (
+                <li key={item.day} className="text-white">
+                  {item.day} <span className="pull-right p-1 flex-row">{item.time}</span>
+                </li>
+              ))}
             </div>
           </div>
         </div>

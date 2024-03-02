@@ -28,10 +28,430 @@
   color: #61dafb;
 }
 
+.demo-bg {
+  /* background: #d4bfc6; */
+  margin-top: 60px;
+}
+
+.business-hours {
+  background: #222;
+  padding: 30px 14px;
+  margin-top: -15px;
+  position: relative;
+}
+
+.business-hours:before {
+  content: '';
+  width: 23px;
+  height: 23px;
+  background: #111;
+  position: absolute;
+  top: 5px;
+  left: -12px;
+  transform: rotate(-45deg);
+  z-index: -1;
+}
+
+.business-hours .title {
+  font-size: 20px;
+  color: #BBB;
+  text-transform: uppercase;
+  padding-left: 5px;
+  border-left: 4px solid #ffac0c;
+}
+
+.business-hours li {
+  color: #888;
+  line-height: 30px;
+  border-bottom: 1px solid #333;
+}
+
+.business-hours li:last-child {
+  border-bottom: none;
+}
+
+.business-hours .opening-hours li.today {
+  color: #ffac0c;
+}
+
+.opening-hours {
+  border-bottom: 1px solid pink;
+}
+
+.opening-hours li {
+  border-bottom: 1px solid pink;
+}
+
+.responsive-map {
+  overflow: hidden;
+  height: 0;
+  padding-bottom: 30%;
+  position: relative
+}
+
+.responsive-map iframe {
+  border: 0;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  position: absolute;
+}
+
+.Address {
+  text-align: center;
+  font-weight: 400;
+
+  margin-top: 2rem;
+  font-family: "Montserrat, sans-serif";
+  font-style: normal;
+}
+
+.sub_address {
+  font-weight: 300;
+  /* font-size: 24px; */
+  font-family: "Fredoka", sans-serif;
+  font-style: normal;
+  margin-left: 60px;
+  margin-top: 10px;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100vh;
+}
+
+
+*,
+*:after,
+*:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+
+
+img {
+  max-width: 100%;
+}
+
+.ui-card {
+  width: 350px;
+  /* height: 400px; */
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease-out;
+  background: radial-gradient(#111 50%, #000 100%);
+}
+
+.ui-card img {
+  transform: scale(1.3);
+  transition: all 0.3s ease-out;
+  height: 300px;
+}
+
+.ui-card:hover img {
+  transform: scale(1.1) translateY(-20px);
+  opacity: 0.3
+}
+
+.ui-card .description {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 15px;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  font-size: 18px;
+}
+
+.ui-card .description h4 {
+  font-weight: 700;
+  font-size: 28px;
+  margin: 0 0 20px;
+  transform: translateY(30px);
+  opacity: 0;
+  transition: all 0.3s ease-out;
+
+}
+
+/* Add this CSS at the end of your stylesheet */
+@media (max-width: 768px) {
+  .ui-card .description p {
+    transform: translateY(0) !important;
+    opacity: 1 !important;
+    transition: none !important;
+  }
+
+  .ui-card .description h4 {
+    transform: translateY(0) !important;
+    opacity: 1 !important;
+    transition: none !important;
+  }
+
+  .ui-card:hover img {
+    transform: scale(1.1) translateY(0px) !important;
+    opacity: 0.3 !important;
+  }
+
+  .ui-card {
+    transition: none !important;
+
+  }
+
+  .ui-card img {
+    transition: none !important;
+    opacity: 0.3 !important;
+
+  }
+
+  .ReadMore {
+    transition: none !important;
+    transform: scale(1.1) translateY(0px) !important;
+  }
+
+  .ui-card .description Link {
+    transition: none !important;
+    transform: scale(1.1) translateY(0px) !important;
+  }
+
+
+}
+
+
+
+
+.ui-card .description p {
+  transform: translateY(30px);
+  opacity: 0;
+  transition: all 0.3s ease-out 0.2s;
+}
+
+.ui-card .description a {
+  color: #fff;
+  background: #34aff3;
+  display: inline-block;
+  padding: 10px 25px;
+  border-radius: 5px;
+  text-decoration: none;
+  transform: translateY(30px);
+  opacity: 0;
+  transition: all 0.3s ease-out 0.4s;
+}
+
+
+.ui-card .description a:hover {
+  background: #0a83c5;
+}
+
+.ui-card:hover .description h4 {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+.ui-card:hover .description p {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+.ui-card:hover .description a {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+/* eyelashes */
+
+/*  */
+
+/* appointment card  */
+#body_header {
+
+  width: auto;
+  margin: 0px auto;
+  text-align: center;
+  font-size: 25px;
+  margin-top: 20px;
+}
+
+form {
+  max-width: 300px;
+  margin: 10px auto;
+  padding: 10px 20px;
+  background: black;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+
+
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="datetime"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="time"],
+input[type="url"],
+textarea,
+select {
+  background: rgba(186, 5, 5, 0.1);
+  border: none;
+  font-size: 16px;
+  height: auto;
+  margin: auto;
+  outline: 0;
+  padding: 8px;
+  width: 100%;
+  background-color: #e8eeef;
+  color: black;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
+  margin-bottom: 30px;
+  border-radius: 10px;
+
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  margin: 0 4px 8px 0;
+}
+
+select {
+  padding: 6px;
+  height: 32px;
+  border-radius: 2px;
+}
+
+
+
+fieldset {
+  margin-bottom: 30px;
+  border: none;
+}
+
+legend {
+  font-size: 1.4em;
+
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  /* padding: 6px; */
+  font-weight: bold;
+  margin: 10px;
+}
+
+label.light {
+  font-weight: 300;
+  display: inline;
+}
+
+
+
+
+form {
+  max-width: 480px;
+}
+
+.Appointment_Main_div {
+  /* background-color: #eac4cb; */
+}
+
+/* Footer */
+.footer {
+  position: relative;
+  width: 100%;
+  /* background: #3586ff; */
+  min-height: 100px;
+  padding: 20px 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 10px;
+  color: black;
+}
+
+.social-icon,
+.menu {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+  flex-wrap: wrap;
+}
+
+.social-icon__item,
+.menu__item {
+  list-style: none;
+}
+
+.social-icon__link {
+  font-size: 2rem;
+  color: #0a0909;
+  margin: 0 10px;
+  display: inline-block;
+  transition: 0.5s;
+}
+
+.social-icon__link:hover {
+  transform: translateY(-10px);
+}
+
+.menu__link {
+  font-size: 1.2rem;
+  color: #070707;
+  margin: 0 10px;
+  display: inline-block;
+  transition: 0.5s;
+  text-decoration: none;
+  opacity: 0.75;
+  font-weight: 300;
+}
+
+.menu__link:hover {
+  opacity: 1;
+}
+
+.footer p {
+  color: #0d0b0b;
+  margin: 15px 0 10px 0;
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+
+
+
+@keyframes animateWaves {
+  0% {
+    background-position-x: 1000px;
+  }
+
+  100% {
+    background-positon-x: 0px;
+  }
+}
+
+
+
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }

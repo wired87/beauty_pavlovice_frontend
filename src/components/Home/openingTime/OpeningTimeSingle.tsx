@@ -1,5 +1,5 @@
-import React, {memo, ReactNode, useCallback} from "react";
-import {OpeningTimeTypes} from "../../ComponentInterfaces";
+import React, { memo, ReactNode, useCallback } from "react";
+import { OpeningTimeTypes } from "../../ComponentInterfaces";
 import "../../../styles/coponentStyles/homeStyles/openingTime.css";
 import "../../../styles/main.css";
 import Font from "react-font";
@@ -14,7 +14,7 @@ const OpeningTimeBlock: React.FC<OpeningTimeBlockTypes> = (
 
   const renderItem = useCallback((): ReactNode => {
     return itemList.map((item: OpeningTimeTypes, index: number) => {
-      return(
+      return (
         <Font family='Abel'>
           <li className={"dFlex flexColumn flexCenter textCenter"}>
             <p>
@@ -31,7 +31,7 @@ const OpeningTimeBlock: React.FC<OpeningTimeBlockTypes> = (
   }, [itemList]);
 
 
-  return(
+  return (
     <div className={""}>
       <ul className={"list-unstyled d-flex flex-column"}>
         {
