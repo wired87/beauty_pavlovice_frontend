@@ -10,14 +10,9 @@ import MainContextProvider from "./Context/ContextProvider/MainContextProvider";
 import UpperLinkBar from "./components/Home/UpperLinkBar";
 import Appointment from "./screens/Appointment/Appointment";
 import Category from './screens/Category';
-import Eyelashes from './screens/Eyelashes';
-import Gesichmassage from './screens/Gesichmassage';
-import Peeling from './screens/Peeling';
-import Professionele from './screens/Professionele';
-import Kosmetikbehandlugen from './screens/Kosmetikbehandlugen';
+import Product from './screens/Product';
 
 const App: React.FC = () => {
-
   return (
     <MainContextProvider>
       <Router>
@@ -27,23 +22,14 @@ const App: React.FC = () => {
           <Route path="/" element={<Home />} />
           <Route path="*" element={<Home />} />
           <Route path="termin" element={<Appointment />} />
-          <Route path="Category" element={<Category />} />
-          <Route path="product/:productName" element={<Gesichmassage />} />
-          <Route path="Eyelashes" element={<Eyelashes />} />
-          <Route path="Gesichmassage" element={<Gesichmassage />} />
-          <Route path="Peeling" element={<Peeling />} />
-          <Route path="Professionele" element={<Professionele />} />
-          <Route path="Kosmetikbehandlugen" element={<Kosmetikbehandlugen />} />
-
-
-
-
-
-
+          <Route path="category" element={<Category />} />
+          <Route path="product/:productName" element={<Product />} />
+          {/* <Route path="Eyelashes" element={<Eyelashes />} /> */}
+          {/* <Route path="Gesichmassage" element={<Gesichmassage />} /> */}
+          {/* <Route path="Peeling" element={<Peeling />} /> */}
         </Routes>
       </Router>
     </MainContextProvider>
-
   );
 }
 

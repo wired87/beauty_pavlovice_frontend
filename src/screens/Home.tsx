@@ -19,9 +19,9 @@ const Home: React.FC = () => {
   };
   return (
     <div className="container home-container" >
-      <img src={title} className={"titleImage"} alt="title.png" />
+      <img src={title} className={"titleImage mt-5"} alt="title.png" />
       <OpeningTimeMain />
-      <div className="row mb-5 justify-content-center " style={{ height: "400px" }}>
+      <div className="row mb-5 justify-content-center  " style={{ height: "400px" }}>
 
         <div className=" col-md-6 " style={{ height: '100%' }}>
 
@@ -30,7 +30,7 @@ const Home: React.FC = () => {
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2508.5463792379865!2d13.69820687595969!3d51.0429983717113!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4709c57ef26975e1%3A0x1ac483765364d384!2sReisewitzer%20Str.%2020%2C%2001159%20Dresden%2C%20Germany!5e0!3m2!1sen!2s!4v1708539997213!5m2!1sen!2s" height='600' width='600' loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
           </div>
         </div>
-        <div className="col-md-6 " style={{ display: "flex", flexDirection: "column", }}>
+        <div className="col-md-6 gap-3 " style={{ display: "flex", flexDirection: "column", }}>
 
 
           <h1 className="Address">
@@ -45,7 +45,7 @@ const Home: React.FC = () => {
             <br />
 
             01159 </h2>
-          <div className="d-flex flex-row-reverse">
+          <div style={{ marginLeft: "50px" }} className="d-flex flex-start">
 
             <button style={{ fontFamily: "Montserrat,sans-serif" }} className="btn  w-50 text-bold bg-dark text-white" onClick={handleButtonClick} >
               Book Your Appointment now

@@ -28,27 +28,27 @@ const services = [
     {
         title: "wimpernverlängerung",
         imageUrl: "https://media.glamour.com/photos/65512d4c24522f9dbd630bb5/4:3/w_2035,h_1526,c_limit/Lux-Makeup-Beauty-Awards.jpg",
-        link: "/eyelashes"
+        link: "/product/Wimpernverlängerung"
     },
     {
         title: "Gesichtsmassage",
         imageUrl: "https://media.glamour.com/photos/65512d4c24522f9dbd630bb5/4:3/w_2035,h_1526,c_limit/Lux-Makeup-Beauty-Awards.jpg",
-        link: "/Gesichmassage"
+        link: "/product/Gesichtsmassage"
     },
     {
         title: "Peeling",
         imageUrl: "https://media.glamour.com/photos/65512d4c24522f9dbd630bb5/4:3/w_2035,h_1526,c_limit/Lux-Makeup-Beauty-Awards.jpg",
-        link: "/Peeling"
+        link: "/product/Peeling"
     },
     {
         title: "Professionele Hautreinigung",
         imageUrl: "https://media.glamour.com/photos/65512d4c24522f9dbd630bb5/4:3/w_2035,h_1526,c_limit/Lux-Makeup-Beauty-Awards.jpg",
-        link: "/Professionele"
+        link: "/product/Hautreinigung"
     },
     {
         title: "Kosmetikbehandlungen",
         imageUrl: "https://media.glamour.com/photos/65512d4c24522f9dbd630bb5/4:3/w_2035,h_1526,c_limit/Lux-Makeup-Beauty-Awards.jpg",
-        link: "/Kosmetikbehandlugen"
+        link: "/product/Kosmetikbehandlungen"
     }
 ];
 

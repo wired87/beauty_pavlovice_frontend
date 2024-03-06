@@ -20,7 +20,7 @@ const headerButtons: HeaderButtonTypes[] = [
     className: "current"
   },
   {
-    href: "Category",
+    href: "/category",
     title: "Kategorie",
     className: "current"
   },

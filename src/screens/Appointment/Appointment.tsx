@@ -35,19 +35,19 @@ function AppointmentForm(): JSX.Element {
   };
 
   return (
-    <div className='Appointment_Main_div pinkBg p-5' id="container ">
+    <div className='Appointment_Main_div gap-5 p-5' id="container ">
       <div id="body_header">
         <p style={{ fontFamily: "Montserrat, sans-serif", fontWeight: "500" }}>Make your appointments easier</p>
       </div>
-      <form onSubmit={handleSubmit}>
+      <form className='mt-5' onSubmit={handleSubmit}>
         <fieldset>
-          <label className='text-white' htmlFor="name">Name:</label>
+          <label className='text-dark' htmlFor="name">Name:</label>
           <input type="email" id="mail" name="user_email" placeholder="abc@xyz.com" required value={formData.user_email} onChange={handleChange} />
-          <label className='text-white' htmlFor="tel">Contact Num:</label>
+          <label className='text-dark' htmlFor="tel">Contact Num:</label>
           <input type="tel" id="tel" placeholder="Include country code" name="user_num" value={formData.user_num} onChange={handleChange} />
         </fieldset>
         <fieldset>
-          <label className='text-white' htmlFor="appointment_for">Appointment for:</label>
+          <label className='text-dark' htmlFor="appointment_for">Appointment for:</label>
           <select id="appointment_for" name="appointment_for" required value={formData.appointment_for} onChange={handleChange}>
             <option value="Klassisch 1:1 Technik">Klassisch 1:1 Technik</option>
             <option value="2D-3D Volumen">2D-3D Volumen</option>
@@ -59,9 +59,9 @@ function AppointmentForm(): JSX.Element {
             <option value="Is Clinical Behandlungen">Is Clinical Behandlungen</option>
             <option value="Apparative Kosmetik Behandlungen">Apparative Kosmetik Behandlungen</option>
           </select>
-          <label className='text-white' htmlFor="date">Date:</label>
+          <label className='text-dark' htmlFor="date">Date:</label>
           <input type="date" name="date" value={formData.date} required onChange={handleChange} />
-          <label className='text-white' htmlFor="time">Time:</label>
+          <label className='text-dark' htmlFor="time">Time:</label>
           <input type="time" name="time" value={formData.time} required onChange={handleChange} />
         </fieldset>
         <div className='d-flex justify-content-center align-items-center' >

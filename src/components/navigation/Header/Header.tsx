@@ -1,33 +1,30 @@
-import React, {memo, useContext} from "react";
+import React, { memo, useContext } from "react";
 // <ParticlesBg type="circle" bg={true} />
 import "../../../styles/main.css";
 import "../../../styles/coponentStyles/nav.css";
 import "../../../styles/coponentStyles/buttons.css";
 import logoNoBg from "../../../assets/images/logoNoBg.png";
-import {WindowWidth} from "../../../functions/WindowWidth";
+import { WindowWidth } from "../../../functions/WindowWidth";
 import OffcanvasBootstrap from "../../Offcanvas";
 import HeaderItems from "./HeaderItems";
 import { RxHamburgerMenu } from "react-icons/rx";
-import {MainContext} from "../../../Context/MainContext";
-
-
-
+import { MainContext } from "../../../Context/MainContext";
 
 const Header: React.FC = () => {
 
-  const {show, updateShow} = useContext(MainContext);
+  const { show, updateShow } = useContext(MainContext);
 
   const transformHeader = () => {
-    const width:number = WindowWidth();
+    const width: number = WindowWidth();
     console.log("width:", width);
     if (width > 960) {
-      return(
+      return (
         <HeaderItems />
       )
     }
-    return(
+    return (
       <button className={"offcanvasToggleButton flexCenter"} onClick={() => updateShow(true)}>
-        <RxHamburgerMenu size={30}/>
+        <RxHamburgerMenu size={30} />
       </button>
     )
   }
@@ -35,7 +32,7 @@ const Header: React.FC = () => {
   return (
     <>
       <header id="home" className={"headerContainer d-flex justify-content-center align-items-center flex-row "}>
-        <img src={logoNoBg} className={"logo"} alt="logoNoBg.png"/>
+        <img src={logoNoBg} className={"logo"} alt="logoNoBg.png" />
         {
           transformHeader()
         }
@@ -52,7 +49,7 @@ const Header: React.FC = () => {
         </p>
 
       </header>
-      <OffcanvasBootstrap show={show} updateShow={updateShow}/>
+      <OffcanvasBootstrap show={show} updateShow={updateShow} />
     </>
   );
 }
