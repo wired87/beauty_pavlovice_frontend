@@ -1,29 +1,23 @@
 import React, { memo } from "react";
+import { useNavigate } from "react-router-dom";
+
 import OpeningTimeMain from "../components/Home/openingTime/OpeningTimeMain";
 import title from "../assets/images/title.jpeg";
 import "../styles/main.css";
 import "../styles//coponentStyles/homeStyles/homeMain.css";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEnvelope, faPhone, } from '@fortawesome/free-solid-svg-icons'
-import { faInstagram, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
-import { useNavigate } from "react-router-dom";
-import Footer from "../components/navigation/Footer/Footer";
-
-
 
 const Home: React.FC = () => {
-
   const navigate = useNavigate();
   const handleButtonClick = () => {
-    navigate("/termin"); // Navigating to "termin" page
+    navigate("/termin");
   };
+
   return (
-    <div className="container home-container" >
+    <div style={{}} className="container home-container gap-5" >
       <img src={title} className={"titleImage mt-5"} alt="title.png" />
       <OpeningTimeMain />
-      <div className="row mb-5 justify-content-center  " style={{ height: "400px" }}>
-
-        <div className=" col-md-6 " style={{ height: '100%' }}>
+      <div className="row mb-5 justify-content-center">
+        <div className="col-md-6" style={{ height: "400px" }}>
 
 
           <div className="mx-auto  responsive-map" style={{ height: "100%" }}>
@@ -37,7 +31,7 @@ const Home: React.FC = () => {
             Beauty_Bar_by_Pavlovic, Dresden
           </h1 >
           <h2 className="sub_address"> Reisewitzer Str. 20 <br />
-
+            a
             Dresden
             <br />
 
@@ -53,14 +47,8 @@ const Home: React.FC = () => {
           </div>
 
         </div>
-        <Footer />
-
-
-
       </div>
-
-
-    </div >
+    </div>
   );
 }
 
