@@ -10,7 +10,7 @@ const Category: React.FC = () => {
             <div className="row justify-content-around mt-4">
                 {services.map((service, index) => (
                     <div key={index} className="col-md-4 mt-2 d-flex justify-content-center align-items-center">
-                        <div className="ui-card d-flex justify-content-center align-items-center rounded">
+                        <div className="ui-card d-flex justify-content-center mb-5 align-items-center rounded">
                             <img src={service.imageUrl} className="card-img-top" alt={service.title} />
                             <div className="description card-body">
                                 <h4 className="card-title">{service.title}</h4>

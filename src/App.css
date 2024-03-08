@@ -99,7 +99,7 @@
 }
 
 .Address {
-  text-align: center;
+  /* text-align: center; */
   font-weight: 400;
 
   margin-top: 2rem;
@@ -112,7 +112,7 @@
   font-size: 24px;
   font-family: "Fredoka", sans-serif;
   font-style: normal;
-  margin-left: 50px;
+  /* margin-left: 50px; */
   margin-top: 10px;
 }
 
@@ -146,7 +146,7 @@ img {
   /* height: 400px; */
   position: relative;
   overflow: hidden;
-  transition: all 0.3s ease-out;
+  /* transition: all 0.3s ease-out; */
   background: radial-gradient(#111 50%, #000 100%);
 }
 
@@ -222,10 +222,15 @@ img {
     transform: scale(1.1) translateY(0px) !important;
   }
 
+  .ui-card .description a {
+    transform: none !important;
+    opacity: 1 !important;
+    transition: none !important;
+  }
+
+
 
 }
-
-
 
 
 .ui-card .description p {
@@ -243,13 +248,13 @@ img {
   text-decoration: none;
   transform: translateY(30px);
   opacity: 0;
-  transition: all 0.3s ease-out 0.4s;
+  transition: all 0.2s ease-out 0.4s;
 }
 
 
-.ui-card .description a:hover {
+/* .ui-card .description a:hover {
   background: #0a83c5;
-}
+} */
 
 .ui-card:hover .description h4 {
   opacity: 1;
@@ -364,7 +369,7 @@ form {
 }
 
 .Appointment_Main_div {
-  max-width: 520px;
+  max-width: 800px;
   margin-inline: auto;
 }
 

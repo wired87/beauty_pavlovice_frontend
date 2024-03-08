@@ -8,7 +8,7 @@ import { faInstagram, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 const Footer: React.FC = () => {
 
   return (
-    <footer className="footer mt-5 pb-5">
+    <footer style={{ marginTop: "10%" }} className="footer pb-5">
       <div className="waves">
         <div className="wave" id="wave1"></div>
         <div className="wave" id="wave2"></div>
