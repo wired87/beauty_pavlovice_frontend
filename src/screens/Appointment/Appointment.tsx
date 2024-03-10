@@ -38,6 +38,7 @@ function AppointmentForm(): JSX.Element {
 
   const { allServices } = useContext(ServiceContext);
 
+  const [bookedAppoinment, setBookedAppointment] = useState<Appointment[]>([]);
   const [allAppointments, setAllAppointments] = useState<Appointment[]>([]);
   const [formData, setFormData] = useState<FormData>(initialState);
 
@@ -56,6 +57,10 @@ function AppointmentForm(): JSX.Element {
   useEffect(() => {
     getAllBookings();
   }, [])
+
+  useEffect(() => {
+    getTodayAppoinments()
+  }, [formData?.date])
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>): void => {
     const { name, value } = e.target;
@@ -105,9 +110,9 @@ function AppointmentForm(): JSX.Element {
       if (Array.isArray(response.data?.message)) {
         const data = response.data?.message;
         const newData: Appointment[] = data.map((item: any) => {
-          const startTime = moment(item.start).format('HH:mm');
-          const endTime = moment(item.end).format('HH:mm');
-          const date = moment(item.start).format('YYYY-MM-DD');
+          const startTime = moment(item.start).utcOffset(item.start).format('HH:mm');
+          const endTime = moment(item.end).utcOffset(item.end).format('HH:mm');
+          const date = moment(item.start).utcOffset(item.start).format('YYYY-MM-DD');
 
           return {
             ...item,
@@ -125,8 +130,12 @@ function AppointmentForm(): JSX.Element {
 
   const getTodayAppoinments = useCallback(() => {
     let filter = allAppointments.filter(f => f?.date == formData.date)
+    setBookedAppointment(filter)
     return filter;
   }, [formData?.date])
+
+  console.log('bookedAppoinment ===> ', bookedAppoinment);
+
 
   const getAvailability = useCallback(() => {
     if (!formData.time || !formData.date) return 0; // If no time or date selected, return 0 availability
@@ -165,7 +174,7 @@ function AppointmentForm(): JSX.Element {
           <label className='text-dark' htmlFor="appointment_for">Appointment for:</label>
           <select id="serviceID" name="serviceID" required value={formData.serviceID} onChange={handleChange}>
             {allServices.map(e => (
-              <option value={e.id}>{e.title} ---- <span>{e.price}</span></option>
+              <option value={e.id}>{e.title} <span className='fw-bold'>{e.price}&euro;</span></option>
             ))}
           </select>
           <label className='text-dark' htmlFor="date">Date:</label>
@@ -181,6 +190,8 @@ function AppointmentForm(): JSX.Element {
           <button className='btn text-white bg-dark' type="submit">Request For Appointment</button>
         </div>
       </form>
+
+      {bookedAppoinment?.map(e => <p className='fs-6 fw-bold text-danger'>{e?.startTime} -- {e?.endTime} -- {e?.date}</p>)}
     </div>
   );
 }

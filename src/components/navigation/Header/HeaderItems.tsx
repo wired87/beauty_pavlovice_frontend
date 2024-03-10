@@ -10,8 +10,8 @@ const headerButtons: HeaderButtonTypes[] = [
     className: "current"
   },
   {
-    href: "*",
-    title: "Öffnungszeiten",
+    href: "#openingTimeSection", // Link to opening times section
+    title: "Öffnungszeiten", // Changed title to Öffnungszeiten
     className: "current"
   },
   {

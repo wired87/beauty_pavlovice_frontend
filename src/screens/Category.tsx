@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom';
 
 const Category: React.FC = () => {
     return (
-        <div className='container mt-5 pb-5'>
-            <h1 style={{ fontFamily: "Montserrat, sans-serif", fontStyle: "normal", fontWeight: "400", color: "#c29a44" }}>
-                Entdecke Unsere Services:
+        <div style={{ marginTop: "80px" }} className='container pb-6'>
+            <h1 className='d-flex justify-content-center align-items-center' style={{ fontFamily: "Montserrat, sans-serif", fontStyle: "normal", fontWeight: "400", color: "#c29a44" }}>
+                Entdecke Unsere Services
             </h1>
-            <div className="row justify-content-around mt-4">
+            <div className="row justify-content-around mt-5">
                 {services.map((service, index) => (
                     <div key={index} className="col-md-4 mt-2 d-flex justify-content-center align-items-center">
-                        <div className="ui-card d-flex justify-content-center mb-5 align-items-center rounded">
+                        <div style={{ marginBottom: "20%" }} className="ui-card d-flex justify-content-center align-items-center rounded">
                             <img src={service.imageUrl} className="card-img-top" alt={service.title} />
                             <div className="description card-body">
                                 <h4 className="card-title">{service.title}</h4>

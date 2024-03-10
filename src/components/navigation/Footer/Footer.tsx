@@ -8,7 +8,7 @@ import { faInstagram, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 const Footer: React.FC = () => {
 
   return (
-    <footer style={{ marginTop: "10%" }} className="footer pb-5">
+    <footer style={{ marginTop: "12%" }} className="footer pb-5">
       <div className="waves">
         <div className="wave" id="wave1"></div>
         <div className="wave" id="wave2"></div>
@@ -19,18 +19,18 @@ const Footer: React.FC = () => {
         <li className="social-icon__item"><a className="social-icon__link" href="https://www.instagram.com/beauty_bar_by_pavlovic/">
           <FontAwesomeIcon size="1x" icon={faInstagram} />
         </a></li>
-        <li className="social-icon__item"><a className="social-icon__link" href="mailto:recipient@example.com">
+        {/* <li className="social-icon__item"><a className="social-icon__link" href="mailto:recipient@example.com">
           <FontAwesomeIcon size="1x" icon={faEnvelope} />
 
-        </a></li>
+        </a></li> */}
         <li className="social-icon__item"><a className="social-icon__link" href="tel:+1234567890">
           <FontAwesomeIcon size="1x" icon={faPhone} />
 
         </a></li>
-        <li className="social-icon__item"><a className="social-icon__link" href="https://api.whatsapp.com/send/?phone=%2B4915252197474&text&type=phone_number&app_absent=0">
+        {/* <li className="social-icon__item"><a className="social-icon__link" href="https://api.whatsapp.com/send/?phone=%2B4915252197474&text&type=phone_number&app_absent=0">
           <FontAwesomeIcon size="1x" icon={faWhatsapp} />
 
-        </a></li>
+        </a></li> */}
       </ul>
       <ul className="menu">
         <li className="menu__item"><a className="menu__link" href="#">Home</a></li>

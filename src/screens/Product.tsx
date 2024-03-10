@@ -1,18 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { apiServices } from '../services/api.services';
-import { loadavg } from 'os';
-
-interface Item {
-    name: string;
-    price: string | JSX.Element;
-}
-
-interface Section {
-    imageUrl: string;
-    title: string;
-    items: Item[];
-}
 
 // Define interface for the item structure
 interface ServiceItem {
@@ -32,18 +20,20 @@ let allCategories = [
             {
                 imageUrl: "https://media.glamour.com/photos/65512d4c24522f9dbd630bb5/4:3/w_2035,h_1526,c_limit/Lux-Makeup-Beauty-Awards.jpg",
                 title: "Klassisch (1:1 Technik)",
-                sectionColor: 'white',
-                index: [0, 1, 2, 3, 4]
+                sectionColor: '#F3E1E1',
+                index: [0, 1, 2, 3, 4],
             },
             {
                 imageUrl: "https://media.glamour.com/photos/65512d4c24522f9dbd630bb5/4:3/w_2035,h_1526,c_limit/Lux-Makeup-Beauty-Awards.jpg",
                 title: "2D-3D Volumen",
-                index: [5, 6, 7, 8, 9]
+                index: [5, 6, 7, 8, 9],
+                sectionColor: '#F6F5F5',
             },
             {
                 imageUrl: "https://media.glamour.com/photos/65512d4c24522f9dbd630bb5/4:3/w_2035,h_1526,c_limit/Lux-Makeup-Beauty-Awards.jpg",
                 title: "4D-5D Volumen",
-                index: [10, 11, 12, 13, 14, 15, 16, 17, 18]
+                index: [10, 11, 12, 13, 14, 15, 16, 17, 18],
+                sectionColor: '#F3E1E1',
             }
         ],
     },
@@ -55,18 +45,20 @@ let allCategories = [
             {
                 imageUrl: "https://media.glamour.com/photos/65512d4c24522f9dbd630bb5/4:3/w_2035,h_1526,c_limit/Lux-Makeup-Beauty-Awards.jpg",
                 title: "Kosmetikbehandlungen",
-                sectionColor: 'white',
+                sectionColor: '#F6F5F5',
                 index: []
                 // index: [0, 2, 3, 4]
             },
             {
                 imageUrl: "https://media.glamour.com/photos/65512d4c24522f9dbd630bb5/4:3/w_2035,h_1526,c_limit/Lux-Makeup-Beauty-Awards.jpg",
                 title: "Is Clinical Behandlungen",
+                sectionColor: '#F3E1E1',
                 index: [0, 1, 2, 3]
             },
             {
                 imageUrl: "https://media.glamour.com/photos/65512d4c24522f9dbd630bb5/4:3/w_2035,h_1526,c_limit/Lux-Makeup-Beauty-Awards.jpg",
                 title: "Apparative Kosmetik Behandlungen",
+                sectionColor: '#F6F5F5',
                 index: [4, 5, 6, 7, 8]
             }
         ],
@@ -133,7 +125,7 @@ const Product: React.FC = () => {
     return (
         <div className='container mt-5 pb-5'>
             {!find?.isMulti ? (
-                <div className='row align-items-center justify-content-evenly mt-5'>
+                <div style={{ backgroundColor: "#F6F5F5" }} className='row align-items-center  p-4 justify-content-evenly mt-5'>
                     <div className='col-md-6 col-sm-12'>
                         <img
                             src={find?.image}
@@ -146,14 +138,19 @@ const Product: React.FC = () => {
                         />
                     </div>
                     <div className='col-md-6 p-4'>
-                        <div className='d-flex flex-column'>
-                            <h1 className="font-weight-bold">{find?.tile || ""}</h1>
+                        <div className='d-flex flex-column '>
+                            <h2 className="font-weight-bold">{find?.tile || ""}</h2>
                             {services.length ? (
                                 <>
                                     {services.map((item, index) => (
-                                        <p key={index} className='fs-5'>{item.title} <span className='mx-3 text-danger fw-bold'>{item.price}</span></p>
+                                        <div className='d-flex text-grey align-items-center justify-content-between mb-1'>
+                                            <p key={services[index].id} className='m-0 fs-5'>
+                                                {item.title}
+                                            </p>
+                                            <span className='mx-3 text-dark fw-bold'>{item.price} &euro; </span>
+                                        </div>
                                     ))}
-                                    <button style={{ backgroundColor: "#F4C2C2", color: "black", border: "none" }} className="btn w-50" onClick={handleBookNow}>Book Now</button>
+                                    <button style={{ backgroundColor: "black", color: "white", border: "none" }} className="fw-bold mt-5 btn w-50" onClick={handleBookNow}>Book Now</button>
                                 </>
                             ) : null}
                         </div>
@@ -161,68 +158,70 @@ const Product: React.FC = () => {
                 </div>
             ) : (
                 <div>
-                    {
-                        find.description ? <>
-                            <div className={`row align-items-center justify-content-evenly mt-5`}>
-                                <div className='col-md-6 col-sm-12'>
-                                    <img
-                                        src='https://media.glamour.com/photos/65512d4c24522f9dbd630bb5/4:3/w_2035,h_1526,c_limit/Lux-Makeup-Beauty-Awards.jpg'
-                                        style={{
-                                            maxWidth: "100%",
-                                            height: "auto",
-                                            maxHeight: "400px",
-                                        }}
-                                        alt={'image'}
-                                    />
-                                </div>
-                                <div className={`col-md-6 p-4`} style={{ backgroundColor: '#F4C2C2' }}>
-                                    <h1 className="font-weight-light">WIMPERNVERLÄNGERUNG</h1>
-                                    {find.description && <p className='fs-5'>{find.description}</p>}
-                                    {find.categories && (
-                                        <>
-                                            <p className='font-weight-bold fs-5'>We have all these:</p>
-                                            {find.categories.map((category, index) => (
-                                                <p key={index} className='fs-5'>{category}</p>
-                                            ))}
-                                        </>
-                                    )}
-                                </div>
-                            </div>
-                        </> : null
-                    }
-
-                    {find?.sections?.map((section, index) => (
-                        <div key={index} className={`row align-items-center justify-content-evenly mt-5 ${index % 2 === 0 ? 'flex-row-reverse' : ''}`}>
+                    {find.description ? <>
+                        <div style={{ backgroundColor: "#F6F5F5" }} className={`row align-items-center justify-content-evenly p-4 mt-5`}>
                             <div className='col-md-6 col-sm-12'>
                                 <img
-                                    src={section.imageUrl}
+                                    src='https://media.glamour.com/photos/65512d4c24522f9dbd630bb5/4:3/w_2035,h_1526,c_limit/Lux-Makeup-Beauty-Awards.jpg'
                                     style={{
                                         maxWidth: "100%",
                                         height: "auto",
                                         maxHeight: "400px",
                                     }}
-                                    alt={section.title}
+                                    alt={'image'}
                                 />
                             </div>
-
-                            <div className={`col-md-6 p-4`}>
-                                <div className='d-flex flex-column'>
-                                    <h1 className="font-weight-light">{section.title}</h1>
-                                    {services.length ? (
-                                        <>
-                                            {section.index.map((index) => (
-                                                <p key={services[index].id} className='fs-5'>
-                                                    {services[index].title}
-                                                    <span className='mx-3 text-danger fw-bold'>{services[index].price}</span>
-                                                </p>
-                                            ))}
-                                            <button style={{ backgroundColor: "#F4C2C2", color: "black", border: "none" }} className="text-bold btn w-50" onClick={handleBookNow}>Book Now</button>
-                                        </>
-                                    ) : null}
-                                </div>
+                            <div className={`col-md-6 p-4`} style={{ backgroundColor: '' }}>
+                                <h2 className="font-weight-light">WIMPERNVERLÄNGERUNG</h2>
+                                {find.description && <p className='fs-5'>{find.description}</p>}
+                                {find.categories && (
+                                    <>
+                                        <p className='fw-bold fs-5'>We have all these:</p>
+                                        {find.categories.map((category, index) => (
+                                            <p key={index} className='mb-2 fs-5'>{category}</p>
+                                        ))}
+                                    </>
+                                )}
                             </div>
                         </div>
-                    ))}
+                    </> : null}
+
+                    {find?.sections?.map((section, index) => {
+                        return (
+                            <div style={{ backgroundColor: section?.sectionColor }} key={index} className={`row align-items-center justify-content-evenly p-5 mt-5 ${index % 2 === 0 ? 'flex-row-reverse' : ''}`}>
+                                <div className='col-md-6 col-sm-12'>
+                                    <img
+                                        src={section.imageUrl}
+                                        style={{
+                                            maxWidth: "100%",
+                                            height: "auto",
+                                            maxHeight: "400px",
+                                        }}
+                                        alt={section.title}
+                                    />
+                                </div>
+
+                                <div className={`col-md-6 p-4`}>
+                                    <div className='d-flex flex-column'>
+                                        <h2 className="font-weight-light">{section.title}</h2>
+                                        {services.length ? (
+                                            <>
+                                                {section.index.map((index) => (
+                                                    <div className='d-flex align-items-center justify-content-between mb-1'>
+                                                        <p key={services[index].id} className='m-0 fs-5'>
+                                                            {services[index].title}
+                                                        </p>
+                                                        <span className='mx-3 text-dark fw-bold'>{services[index].price} &euro;</span>
+                                                    </div>
+                                                ))}
+                                                <button style={{ backgroundColor: "black", color: "white", border: "none" }} className="fw-bold mt-5 btn w-50" onClick={handleBookNow}>Book Now</button>
+                                            </>
+                                        ) : null}
+                                    </div>
+                                </div>
+                            </div>
+                        )
+                    })}
                 </div>
             )}
         </div >

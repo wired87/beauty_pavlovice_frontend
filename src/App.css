@@ -228,8 +228,28 @@ img {
     transition: none !important;
   }
 
+  .bookBtn {
+    margin-top: 10px !important;
+  }
 
 
+
+}
+
+@media (max-width:1280) {
+  .bookBtn {
+    margin: auto !important;
+    background-color: red !important;
+  }
+
+
+}
+
+@media (min-width:1024) {
+  .bookBtn {
+    margin-top: 50px !important;
+    background-color: #000 !important;
+  }
 }
 
 

@@ -11,15 +11,16 @@ const Home: React.FC = () => {
   const handleButtonClick = () => {
     navigate("/termin");
   };
+  
 
   return (
     <div style={{}} className="container home-container gap-5" >
       <img src={title} className={"titleImage mt-5"} alt="title.png" />
-      <div style={{ marginTop: "4%" }}>
+      <div style={{ marginTop: "5%" }}>
 
         <OpeningTimeMain />
       </div>
-      <div style={{ marginTop: "4%" }} className="row mb-5 justify-content-center">
+      <div style={{ marginTop: "5%" }} className="row mb-5 justify-content-center">
         <div className="col-md-6" style={{ height: "400px" }}>
 
 
@@ -31,9 +32,9 @@ const Home: React.FC = () => {
         <div className="col-md-5 gap-3 " style={{ display: "flex", flexDirection: "column", justifyContent: "flex-start" }}>
 
 
-          <h2 className="Address">
+          <h3 className="Address">
             Beauty_Bar_by_Pavlovic, Dresden
-          </h2 >
+          </h3 >
           <h2 className="sub_address"> Reisewitzer Str. 20 <br />
             a
             Dresden
@@ -43,7 +44,7 @@ const Home: React.FC = () => {
             <br />
 
             01159 </h2>
-          <div style={{}} className="d-flex ">
+          <div style={{ marginTop: "120px" }} className="bookBtn d-flex">
 
             <button style={{ fontFamily: "Montserrat,sans-serif" }} className="btn  w-50 text-bold bg-dark text-white" onClick={handleButtonClick} >
               Book Your Appointment now

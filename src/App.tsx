@@ -12,6 +12,7 @@ import UpperLinkBar from "./components/Home/UpperLinkBar";
 import Appointment from "./screens/Appointment/Appointment";
 import Category from './screens/Category';
 import Product from './screens/Product';
+import OpeningTimeMain from './components/Home/openingTime/OpeningTimeMain';
 
 const App: React.FC = () => {
   return (
@@ -26,6 +27,8 @@ const App: React.FC = () => {
             <Route path="termin" element={<Appointment />} />
             <Route path="category" element={<Category />} />
             <Route path="product/:productName" element={<Product />} />
+            <Route path="/offnungszeiten" element={<OpeningTimeMain />} />
+
             {/* <Route path="Eyelashes" element={<Eyelashes />} /> */}
             {/* <Route path="Gesichmassage" element={<Gesichmassage />} /> */}
             {/* <Route path="Peeling" element={<Peeling />} /> */}
