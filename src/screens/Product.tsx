@@ -18,19 +18,19 @@ let allCategories = [
         categories: ["Klassisch 1:1 Technik", "2D-3D Volumen", "4D-5D Volumen"],
         sections: [
             {
-                imageUrl: "https://media.glamour.com/photos/65512d4c24522f9dbd630bb5/4:3/w_2035,h_1526,c_limit/Lux-Makeup-Beauty-Awards.jpg",
+                imageUrl: "https://image.jimcdn.com/app/cms/image/transf/dimension=1920x400:format=jpg/path/sb824aac12c92fde5/image/i0c2b2cd44a023eb9/version/1630505161/image.jpg",
                 title: "Klassisch (1:1 Technik)",
                 sectionColor: '#F3E1E1',
                 index: [0, 1, 2, 3, 4],
             },
             {
-                imageUrl: "https://media.glamour.com/photos/65512d4c24522f9dbd630bb5/4:3/w_2035,h_1526,c_limit/Lux-Makeup-Beauty-Awards.jpg",
+                imageUrl: "https://www.wimpern-traum.de/wp-content/uploads/2017/08/Fotolia_123548392_Subscription_Monthly_M_1-1.jpg",
                 title: "2D-3D Volumen",
                 index: [5, 6, 7, 8, 9],
                 sectionColor: '#F6F5F5',
             },
             {
-                imageUrl: "https://media.glamour.com/photos/65512d4c24522f9dbd630bb5/4:3/w_2035,h_1526,c_limit/Lux-Makeup-Beauty-Awards.jpg",
+                imageUrl: "https://blinklashclub.com/wp-content/uploads/2021/03/5D-Extension.jpg",
                 title: "4D-5D Volumen",
                 index: [10, 11, 12, 13, 14, 15, 16, 17, 18],
                 sectionColor: '#F3E1E1',
@@ -43,20 +43,20 @@ let allCategories = [
         name: 'Kosmetikbehandlungen',
         sections: [
             {
-                imageUrl: "https://media.glamour.com/photos/65512d4c24522f9dbd630bb5/4:3/w_2035,h_1526,c_limit/Lux-Makeup-Beauty-Awards.jpg",
+                imageUrl: "https://png.pngtree.com/thumb_back/fw800/background/20230425/pngtree-various-cosmetics-and-makeup-products-lay-out-on-a-table-image_2512968.jpg",
                 title: "Kosmetikbehandlungen",
                 sectionColor: '#F6F5F5',
                 index: []
                 // index: [0, 2, 3, 4]
             },
             {
-                imageUrl: "https://media.glamour.com/photos/65512d4c24522f9dbd630bb5/4:3/w_2035,h_1526,c_limit/Lux-Makeup-Beauty-Awards.jpg",
+                imageUrl: "https://media.istockphoto.com/id/1453524892/photo/female-scientist-looking-under-microscope-and-using-laptop-in-a-laboratory.webp?b=1&s=170667a&w=0&k=20&c=f6ITpViA6q4W56XB0X2whl3LTxIHf6f1EF-c3FQRRas=",
                 title: "Is Clinical Behandlungen",
                 sectionColor: '#F3E1E1',
                 index: [0, 1, 2, 3]
             },
             {
-                imageUrl: "https://media.glamour.com/photos/65512d4c24522f9dbd630bb5/4:3/w_2035,h_1526,c_limit/Lux-Makeup-Beauty-Awards.jpg",
+                imageUrl: "https://kosmetik-driller.de/wp-content/uploads/2020/01/Kosmetik_Driller_Kosmetikstudio_Bruchsal-167.jpg",
                 title: "Apparative Kosmetik Behandlungen",
                 sectionColor: '#F6F5F5',
                 index: [4, 5, 6, 7, 8]
@@ -67,19 +67,19 @@ let allCategories = [
         id: 3,
         name: 'Gesichtsmassage',
         tile: 'Gesichtsmassage (Gesicht,Hals,Dekolleté)',
-        image: 'https://media.glamour.com/photos/65512d4c24522f9dbd630bb5/4:3/w_2035,h_1526,c_limit/Lux-Makeup-Beauty-Awards.jpg',
+        image: 'https://www.fisioterapiaamilano.it/wp-content/uploads/2019/10/massaggio-anti-age.jpg',
     },
     {
         id: 4,
         name: 'Peeling',
         tile: 'Peeling',
-        image: 'https://media.glamour.com/photos/65512d4c24522f9dbd630bb5/4:3/w_2035,h_1526,c_limit/Lux-Makeup-Beauty-Awards.jpg',
+        image: 'https://media.istockphoto.com/id/1399469980/photo/close-up-portrait-of-anorganic-facial-mask-application-at-spa-salon-facial-treatment-skin.webp?b=1&s=170667a&w=0&k=20&c=509pRCOT3S415mfR9XZz9wm7J0Nt9IdndYgd2YZ0mHQ=',
     },
     {
         id: 4,
         name: 'Hautreinigung',
         tile: 'Professionele Hautreinigung',
-        image: 'https://media.glamour.com/photos/65512d4c24522f9dbd630bb5/4:3/w_2035,h_1526,c_limit/Lux-Makeup-Beauty-Awards.jpg',
+        image: 'https://www.top-beauty-center.de/img/hydro%20facial.jpeg',
     }
 ]
 
@@ -139,7 +139,7 @@ const Product: React.FC = () => {
                     </div>
                     <div className='col-md-6 p-4'>
                         <div className='d-flex flex-column '>
-                            <h2 className="font-weight-bold">{find?.tile || ""}</h2>
+                            <h3 className="font-weight-bold">{find?.tile || ""}</h3>
                             {services.length ? (
                                 <>
                                     {services.map((item, index) => (
@@ -162,7 +162,7 @@ const Product: React.FC = () => {
                         <div style={{ backgroundColor: "#F6F5F5" }} className={`row align-items-center justify-content-evenly p-4 mt-5`}>
                             <div className='col-md-6 col-sm-12'>
                                 <img
-                                    src='https://media.glamour.com/photos/65512d4c24522f9dbd630bb5/4:3/w_2035,h_1526,c_limit/Lux-Makeup-Beauty-Awards.jpg'
+                                    src='https://www.beautiful-pearl.de/images/Wimpern_gr.jpg'
                                     style={{
                                         maxWidth: "100%",
                                         height: "auto",
@@ -172,7 +172,7 @@ const Product: React.FC = () => {
                                 />
                             </div>
                             <div className={`col-md-6 p-4`} style={{ backgroundColor: '' }}>
-                                <h2 className="font-weight-light">WIMPERNVERLÄNGERUNG</h2>
+                                <h3 className="font-weight-light">WIMPERNVERLÄNGERUNG</h3>
                                 {find.description && <p className='fs-5'>{find.description}</p>}
                                 {find.categories && (
                                     <>
@@ -203,15 +203,15 @@ const Product: React.FC = () => {
 
                                 <div className={`col-md-6 p-4`}>
                                     <div className='d-flex flex-column'>
-                                        <h2 className="font-weight-light">{section.title}</h2>
+                                        <h3 className="font-weight-light">{section.title}</h3>
                                         {services.length ? (
                                             <>
                                                 {section.index.map((index) => (
                                                     <div className='d-flex align-items-center justify-content-between mb-1'>
-                                                        <p key={services[index].id} className='m-0 fs-5'>
+                                                        <p key={services[index].id} className='category_items m-0 '>
                                                             {services[index].title}
                                                         </p>
-                                                        <span className='mx-3 text-dark fw-bold'>{services[index].price} &euro;</span>
+                                                        <span style={{ display: "flex", flexWrap: "wrap", overflow: "hidden" }} className='category_items mx-3 text-dark fw-bold'>{services[index].price} &euro;</span>
                                                     </div>
                                                 ))}
                                                 <button style={{ backgroundColor: "black", color: "white", border: "none" }} className="fw-bold mt-5 btn w-50" onClick={handleBookNow}>Book Now</button>

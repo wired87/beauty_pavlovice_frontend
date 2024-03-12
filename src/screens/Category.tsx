@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 
 const Category: React.FC = () => {
     return (
-        <div style={{ marginTop: "80px" }} className='container pb-6'>
+        <div style={{ marginTop: "80px" }} className='container pb-6' >
             <h1 className='d-flex justify-content-center align-items-center' style={{ fontFamily: "Montserrat, sans-serif", fontStyle: "normal", fontWeight: "400", color: "#c29a44" }}>
                 Entdecke Unsere Services
             </h1>
-            <div className="row justify-content-around mt-5">
+            <div className="row justify-content-around mt-5" data-aos="fade">
                 {services.map((service, index) => (
                     <div key={index} className="col-md-4 mt-2 d-flex justify-content-center align-items-center">
                         <div style={{ marginBottom: "20%" }} className="ui-card d-flex justify-content-center align-items-center rounded">
@@ -27,27 +27,27 @@ const Category: React.FC = () => {
 const services = [
     {
         title: "wimpernverlängerung",
-        imageUrl: "https://media.glamour.com/photos/65512d4c24522f9dbd630bb5/4:3/w_2035,h_1526,c_limit/Lux-Makeup-Beauty-Awards.jpg",
+        imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3Revbq9e2fgNWAcDgKP-C0nEA0sV3D9Wd5A&usqp=CAU",
         link: "/product/Wimpernverlängerung"
     },
     {
         title: "Gesichtsmassage",
-        imageUrl: "https://media.glamour.com/photos/65512d4c24522f9dbd630bb5/4:3/w_2035,h_1526,c_limit/Lux-Makeup-Beauty-Awards.jpg",
+        imageUrl: "https://media.dm-static.com/image/upload/q_auto:eco,f_auto/content/rootpage-dm-shop-de-de/resource/image/1475790/landscape/800/562/77ae891bc97467314452953ffb955695/9052F736DD74EAE3BC8B2771AE9F3037/gesichtsmassage-aufmacher-1.jpg",
         link: "/product/Gesichtsmassage"
     },
     {
         title: "Peeling",
-        imageUrl: "https://media.glamour.com/photos/65512d4c24522f9dbd630bb5/4:3/w_2035,h_1526,c_limit/Lux-Makeup-Beauty-Awards.jpg",
+        imageUrl: "https://www.koruhastanesi.com/images/haber/main/what-is-chemical-peeling-3842.webp",
         link: "/product/Peeling"
     },
     {
         title: "Professionele Hautreinigung",
-        imageUrl: "https://media.glamour.com/photos/65512d4c24522f9dbd630bb5/4:3/w_2035,h_1526,c_limit/Lux-Makeup-Beauty-Awards.jpg",
+        imageUrl: "https://noahklinik-cosmetics.de/wp-content/uploads/2024/01/hautreinigung.jpg",
         link: "/product/Hautreinigung"
     },
     {
         title: "Kosmetikbehandlungen",
-        imageUrl: "https://media.glamour.com/photos/65512d4c24522f9dbd630bb5/4:3/w_2035,h_1526,c_limit/Lux-Makeup-Beauty-Awards.jpg",
+        imageUrl: "https://www.esthetic-concept-heilbronn.de/upload/large/kosmetikbehandlungen_large_KXJF9z3Nr3.jpg",
         link: "/product/Kosmetikbehandlungen"
     }
 ];

@@ -182,6 +182,10 @@ img {
 
 }
 
+.category_items {
+  font-size: 20px !important;
+}
+
 /* Add this CSS at the end of your stylesheet */
 @media (max-width: 768px) {
   .ui-card .description p {
@@ -232,25 +236,14 @@ img {
     margin-top: 10px !important;
   }
 
-
-
-}
-
-@media (max-width:1280) {
-  .bookBtn {
-    margin: auto !important;
-    background-color: red !important;
+  .category_items {
+    font-size: 16px !important;
+    background-color: forestgreen;
   }
 
 
 }
 
-@media (min-width:1024) {
-  .bookBtn {
-    margin-top: 50px !important;
-    background-color: #000 !important;
-  }
-}
 
 
 .ui-card .description p {
@@ -312,6 +305,11 @@ form {
   border-radius: 8px;
   margin-top: 10px;
 }
+
+/* Style disabled dates */
+
+
+
 
 
 

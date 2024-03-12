@@ -28,11 +28,13 @@
     "moment": "^2.30.1",
     "react": "^18.2.0",
     "react-bootstrap": "^2.8.0",
+    "react-datepicker": "^6.3.0",
     "react-dom": "^18.2.0",
     "react-font": "^1.2.1",
     "react-icons": "^5.0.1",
     "react-router-dom": "^6.16.0",
     "react-scripts": "5.0.1",
+    "react-time-picker": "^6.6.0",
     "styled-components": "^6.1.8",
     "sweetalert2": "^11.10.6",
     "typescript": "^5.3.3",
@@ -62,5 +64,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/react-datepicker": "^6.2.0"
   }
 }
