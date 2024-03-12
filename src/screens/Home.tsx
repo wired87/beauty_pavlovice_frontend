@@ -1,5 +1,5 @@
-import React, { memo } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { memo, useEffect } from "react";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 import OpeningTimeMain from "../components/Home/openingTime/OpeningTimeMain";
 import title from "../assets/images/title.jpeg";
@@ -12,13 +12,24 @@ const Home: React.FC = () => {
     navigate("/termin");
   };
 
+  const location = useLocation()
+
+  useEffect(() => {
+    if (location.hash) {
+      const element = document.querySelector(location.hash);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [location]);
+
 
   return (
     <div style={{}} className="container home-container gap-5" >
       <img src={title} className={"titleImage mt-5"} alt="title.png" data-aos="fade-right" />
-      <div style={{ marginTop: "5%" }} data-aos="fade"
-      >
-
+      <div style={{ marginTop: "5%" }} data-aos="fade">
         <OpeningTimeMain />
       </div>
       <div style={{ marginTop: "5%" }} className="row mb-5 justify-content-center">
