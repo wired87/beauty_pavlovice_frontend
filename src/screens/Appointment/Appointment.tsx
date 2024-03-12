@@ -76,13 +76,10 @@ function AppointmentForm(): JSX.Element {
     let isAvailable = getAvailability();
 
     if (isAvailable == 1) {
-
       let converted = formData?.date?.toISOString().split('T')[0];
-      console.log("converted", converted);
 
       const selectedTime = moment(converted + "T" + formData.time);
       const formattedDate = moment(selectedTime).format("YYYY-MM-DDTHH:mm:ssZ");
-      console.log("formattedDate", formattedDate);
 
       let data = {
         ...formData,
@@ -265,12 +262,14 @@ function AppointmentForm(): JSX.Element {
         </fieldset>
         <fieldset>
           <label className='text-dark' htmlFor="appointment_for">Appointment for:</label>
-          <select id="serviceID" name="serviceID" required value={formData.serviceID} onChange={handleChange}>
+          <select id="serviceID" name="serviceID" style={{ width: '100%' }} required value={formData.serviceID} onChange={handleChange}>
+            <option disabled value="">Select your Appointment</option> {/* Placeholder option */}
             {allServices.map(e => (
               <option value={e.id}>{e.title} <span className='fw-bold'>{e.price}&euro;</span></option>
             ))}
           </select>
-          <label className='text-dark' htmlFor="date">Date:</label>
+          <label className='text-dark mt-5' htmlFor="date">Date:</label>
+
           <DatePicker
             id="datePicker"
             selected={formData?.date}
@@ -281,48 +280,17 @@ function AppointmentForm(): JSX.Element {
             minDate={today}
             filterDate={disabledDates}
             placeholderText="Select a date"
+            className="custom-date-picker-input"
           />
 
-          {/* <input
-            type="date"
-            name="date"
-            min={new Date().toString()}
-            value={formData.date}
-            required
-            onChange={(e) => {
-              // const selectedDate = new Date(e.target.value);
-              // const today = new Date();
-              // if (selectedDate <= today || selectedDate.getDay() === 0 || selectedDate.getDay() === 6) {
-              //   // If selected date is today or in the past, or if it's Sunday or Saturday, prevent setting the date
-              //   e.preventDefault();
-              //   return;
-              // }
-              setFormData({ ...formData, date: e.target.value });
-            }}
-            style={{
-              color: (dateString => {
-                const selectedDate = new Date(dateString);
-                const dayOfWeek = selectedDate.getDay();
-                return selectedDate <= new Date() || dayOfWeek === 0 || dayOfWeek === 6 ? 'red' : 'black';
-              })(formData.date)
-            }}
-          /> */}
+          <br />
 
-
-
-
-          {/* {bookedAppoinment?.map((e, index) => (
-            <div className="">
-              <p> Booked Slot  {e?.startTime} -- {e?.endTime} -- {e?.date}</p>
-            </div>
-          ))} */}
           <label className='text-dark' htmlFor="time">Time:</label>
           <div style={{ maxHeight: '200px', overflowY: 'auto', display: "flex", alignItems: 'center', flexDirection: "column" }} className=''>
             {availableTimes?.map((e, i) => (
               <p onClick={() => setFormData({ ...formData, time: e })} style={{ justifyContent: "center", borderRadius: "100px", backgroundColor: e == formData.time ? 'green' : '' }} key={i} className='btn btn-outline-success d-flex flex-col w-50   '>{e}</p>
             ))}
           </div>
-          {/* <input type="time" name="time" value={formData.time} required onChange={handleChange} /> */}
           <fieldset>
             <label className='text-dark' htmlFor="name">Information:</label>
             <input type="text" id="information" name="information" placeholder="" required value={formData.information} onChange={handleChange} />
@@ -331,14 +299,8 @@ function AppointmentForm(): JSX.Element {
         <div className='d-flex justify-content-center align-items-center' >
           <button className='btn text-white bg-dark' type="submit">Request For Appointment</button>
         </div>
-      </form>
-
-      {bookedAppoinment?.map((e, index) => (
-        <div >
-          {/* <p>  {e?.startTime} -- {e?.endTime} -- {e?.date}</p> */}
-        </div>
-      ))}
-    </div>
+      </form >
+    </div >
   );
 }
 

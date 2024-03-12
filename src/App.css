@@ -307,6 +307,10 @@ form {
 }
 
 /* Style disabled dates */
+.custom-date-picker-input {
+  width: 100%;
+  /* Adjust the width as needed */
+}
 
 
 
