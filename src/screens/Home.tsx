@@ -45,24 +45,19 @@ const Home: React.FC = () => {
         <div className="col-md-1"> </div>
         <div className="col-md-5 gap-3  " data-aos="fade"
           style={{ display: "flex", flexDirection: "column", justifyContent: "flex-start" }}>
-
-
           <h3 className="Address">
-            Beauty_Bar_by_Pavlovic, Dresden
+            Besuche uns!
           </h3 >
           <h2 className="sub_address"> Reisewitzer Str. 20 <br />
-            a
             Dresden
             <br />
-
             Sachsen
             <br />
-
             01159 </h2>
           <div style={{ marginTop: "120px" }} className="bookBtn d-flex">
 
             <button style={{ fontFamily: "Montserrat,sans-serif" }} className="btn  w-50 text-bold bg-dark text-white" onClick={handleButtonClick} >
-              Book Your Appointment now
+              Vereinbare einen Termin
             </button>
           </div>
 
