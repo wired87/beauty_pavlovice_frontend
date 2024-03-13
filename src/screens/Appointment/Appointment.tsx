@@ -239,29 +239,31 @@ function AppointmentForm(): JSX.Element {
   };
 
   return (
-    <div className='Appointment_Main_div pinkBg mt-5 gap-5 p-5' id="container ">
+    <div className='Appointment_Main_div pinkBg mt-5 gap-5 p-5' id="container">
       <div id="body_header">
-        <p style={{ fontFamily: "Montserrat, sans-serif", fontWeight: "500" }} data-aos="fade-left" >Make your appointment </p>
+        <p style={{ fontFamily: "Montserrat, sans-serif", fontWeight: "500" }} data-aos="fade-left" >Buche einen Termin</p>
       </div>
       <div id="body_header">
-        <p style={{ fontFamily: "Montserrat, sans-serif", fontWeight: "300" }} data-aos="fade-right">Opening hours (Mo - Fr 08:00 - 18:00 Uhr )</p>
+        <p style={{ fontFamily: "Montserrat, sans-serif", fontWeight: "300", fontSize: 16 }} data-aos="fade-right">
+          Unsere Öffnungszeiten (Mo - Fr 08:00 - 18:00 Uhr )
+        </p>
       </div>
       <form className='mt-3' onSubmit={handleSubmit}>
         <fieldset>
-          <label className='text-dark' htmlFor="name">Name:</label>
+          <label className='text-dark' htmlFor="name">Name</label>
           <input type="text" id="lastName" name="lastName" placeholder="Enter your Name" required value={formData.lastName} onChange={handleChange} />
-          <label className='text-dark' htmlFor="tel">Contact Number:</label>
+          <label className='text-dark' htmlFor="tel">Mobil</label>
           <input type="tel" id="contactTel" placeholder="Include country code" name="contactTel" value={formData.contactTel} onChange={handleChange} />
         </fieldset>
         <fieldset>
-          <label className='text-dark' htmlFor="appointment_for">Appointment for:</label>
+          <label className='text-dark' htmlFor="appointment_for">Service</label>
           <select id="serviceID" name="serviceID" style={{ width: '100%' }} required value={formData.serviceID} onChange={handleChange}>
-            <option disabled value="">Select your Appointment</option> {/* Placeholder option */}
+            <option disabled value="">Gewünschte Zeit</option> {/* Placeholder option */}
             {allServices.map(e => (
               <option value={e.id}>{e.title} <span className='fw-bold'>{e.price}&euro;</span></option>
             ))}
           </select>
-          <label className='text-dark mt-5' htmlFor="date">Date:</label>
+          <label className='text-dark mt-5' htmlFor="date">Datum</label>
 
           <DatePicker
             id="datePicker"
@@ -281,11 +283,15 @@ function AppointmentForm(): JSX.Element {
           <label className='text-dark' htmlFor="time">Time:</label>
           <div style={{ maxHeight: '200px', overflowY: 'auto', display: "flex", alignItems: 'center', flexDirection: "column" }} className=''>
             {availableTimes?.map((e, i) => (
-              <p onClick={() => setFormData({ ...formData, time: e })} style={{ justifyContent: "center", borderRadius: "100px", backgroundColor: e == formData.time ? 'green' : '' }} key={i} className='btn btn-outline-success d-flex flex-col w-50   '>{e}</p>
+              <p onClick={() => setFormData({ ...formData, time: e })}
+                 style={{ justifyContent: "center", borderRadius: "100px", backgroundColor: e == formData.time ? 'green' : '' }}
+                 key={i} className='btn btn-outline-success d-flex flex-col w-50'>
+                {e}
+              </p>
             ))}
           </div>
           <fieldset>
-            <label className='text-dark' htmlFor="name">Information:</label>
+            <label className='text-dark' htmlFor="name">Zusätzliche Informationen?</label>
             <input type="text" id="information" name="information" placeholder="" required value={formData.information} onChange={handleChange} />
           </fieldset>
         </fieldset>

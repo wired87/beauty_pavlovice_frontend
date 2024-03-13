@@ -80,9 +80,9 @@
   padding: 50px;
   width: 80vw;
   height: auto;
-  background-color: rgb(255, 241, 220);
 }
 .privacy-main {
+  margin: 100px 0;
   width: 100vw;
   height: auto;
   display: flex;

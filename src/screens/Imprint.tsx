@@ -4,15 +4,15 @@ import "../styles/main.css";
 function PrivacyPolicy() {
 
   return (
-    <div className="privacy-main">
-      <div className="privacy-text-field">
+    <div className="privacy-main pinkBg">
+      <div className="privacy-text-field pinkBg">
         <h2>Datenschutzerklärung</h2>
         <p>
           Nachfolgend informieren wir Sie über die Verarbeitung Ihrer personenbezogenen Daten im Rahmen der Nutzung unseres Online-Angebots. <br/>
         </p>
         <h4>Verantwortlicher: </h4>
         <p>
-          Anastasiia Pavlovic <br/>
+          Anastasia Pavlovic <br/>
           Reisewitzer Str. 20 01159 Dresden <br/>
           Telefon: +4915252197474 <br/>
           E-Mail: beauty.bar.pavlovic@gmail.com <br/>

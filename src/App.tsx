@@ -30,7 +30,6 @@ const App: React.FC = () => {
             <Route path="product/:productName" element={<Product />} />
             <Route path="/offnungszeiten" element={<OpeningTimeMain />} />
             <Route path="/imprint" element={<Imprint />} />
-
           </Routes>
           <Footer />
         </Router>
