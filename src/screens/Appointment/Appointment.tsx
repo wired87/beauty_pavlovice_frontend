@@ -45,9 +45,11 @@ function AppointmentForm(): JSX.Element {
   const [availableTimes, setAvailableTimes] = useState<string[]>([]);
   const shopOpeningTime:string = "08:00";
   const shopClosingTime:string = "17:00";
+  const today = new Date();
 
   useEffect(() => {
-    getAllBookings();
+    getBookedAppointments()
+      .then(() => console.log("Collect all booked appointments..."));
     setMinDate(calculateMinDate());
   }, []);
 
@@ -85,7 +87,7 @@ function AppointmentForm(): JSX.Element {
             text: "Appointment Successfully Booked!",
             icon: "success",
           })
-          getAllBookings();
+          await getBookedAppointments();
           setFormData(initialState)
         } else {
           Swal.fire({
@@ -114,7 +116,7 @@ function AppointmentForm(): JSX.Element {
     }
   };
 
-  const getAllBookings = async () => {
+  const getBookedAppointments = async () => {
     try {
       const response = await apiServices.getAllAppointment();
       if (Array.isArray(response.data?.message)) {
@@ -133,8 +135,8 @@ function AppointmentForm(): JSX.Element {
         });
         setAllAppointments(newData);
       }
-    } catch (error) {
-      console.log("Error in getting all bookings", error);
+    } catch (e:unknown) {
+      console.log("Error in getting all bookings", e);
     }
   }
 
@@ -169,7 +171,6 @@ function AppointmentForm(): JSX.Element {
 
     return isAvailable ? 1 : 0;
   }, [allAppointments, formData.date, formData.time]);
-
 
 
   // Function to generate time slots between opening and closing time
@@ -210,7 +211,7 @@ function AppointmentForm(): JSX.Element {
     });
   };
 
-  // Simulated effect to update available time slots based on selected date
+  // Update available time slots based on selected date
   useEffect(() => {
     // Generate time slots between shop opening and closing time
     let availableTimeSlots = generateTimeSlots();
@@ -227,7 +228,7 @@ function AppointmentForm(): JSX.Element {
     setAvailableTimes(availableTimeSlots);
   }, [formData?.date, bookedAppoinment]);
 
-  // Function to calculate the minimum date (disable dates before today)
+  // Calculate the minimum date (disable dates before today)
   const calculateMinDate = (): string => {
     const today = new Date();
     const year = today.getFullYear();
@@ -241,11 +242,11 @@ function AppointmentForm(): JSX.Element {
     return day !== 0 && day !== 6; // 0 is Sunday, 6 is Saturday
   };
 
-  const today = new Date();
 
   const disabledDates = (date: Date) => {
     return isWeekend(date);
   };
+
   if (!loading) {
     return (
       <div className='Appointment_Main_div pinkBg mt-5 gap-5 p-5' id="container">
@@ -316,7 +317,6 @@ function AppointmentForm(): JSX.Element {
       <CircularProgress color="inherit" />
     </div>
     );
-
 }
 
 export default AppointmentForm;
