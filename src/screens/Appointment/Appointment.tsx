@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 import DatePicker from "react-datepicker";
 import CircularProgress from '@mui/material/CircularProgress';
 import "react-datepicker/dist/react-datepicker.css";
+import Select from 'react-select';
 
 interface FormData {
   lastName: string;
@@ -47,20 +48,24 @@ function AppointmentForm(): JSX.Element {
   const shopClosingTime:string = "17:00";
   const today = new Date();
 
+
   useEffect(() => {
     getBookedAppointments()
       .then(() => console.log("Collect all booked appointments..."));
     setMinDate(calculateMinDate());
   }, []);
 
+
   useEffect(() => {
     getTodayAppoinments();
   }, [formData?.date]);
+
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>): void => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
+
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
@@ -115,6 +120,7 @@ function AppointmentForm(): JSX.Element {
       })
     }
   };
+
 
   const getBookedAppointments = async () => {
     try {
@@ -184,6 +190,7 @@ function AppointmentForm(): JSX.Element {
     return timeSlots;
   };
 
+
   // Function to increment time by 30 minutes
   const incrementTime = (time: string): string => {
     const [hours, minutes] = time.split(':').map(Number);
@@ -195,6 +202,7 @@ function AppointmentForm(): JSX.Element {
     }
     return `${String(newHours).padStart(2, '0')}:${String(newMinutes).padStart(2, '0')}`;
   };
+
 
   // Function to filter out booked time slots
   const filterBookedTimes = (timeSlots: string[], appointment: Appointment): string[] => {
@@ -210,6 +218,7 @@ function AppointmentForm(): JSX.Element {
       return totalMinutes < startTotalMinutes || totalMinutes >= endTotalMinutes;
     });
   };
+
 
   // Update available time slots based on selected date
   useEffect(() => {
@@ -227,6 +236,7 @@ function AppointmentForm(): JSX.Element {
     // Update available time slots state
     setAvailableTimes(availableTimeSlots);
   }, [formData?.date, bookedAppoinment]);
+
 
   // Calculate the minimum date (disable dates before today)
   const calculateMinDate = (): string => {
@@ -246,6 +256,7 @@ function AppointmentForm(): JSX.Element {
   const disabledDates = (date: Date) => {
     return isWeekend(date);
   };
+
 
   if (!loading) {
     return (
