@@ -47,6 +47,15 @@
   align-items: flex-start;
   justify-content: flex-start;
 }
+.flexCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.widthHeight-300 {
+  width: 300px;
+  height: 300px;
+}
 
 .flexColumn {
   flex-direction: column;

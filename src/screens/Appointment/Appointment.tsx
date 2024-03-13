@@ -96,6 +96,14 @@ function AppointmentForm(): JSX.Element {
         }
       }catch(e:unknown) {
         console.log("Error while request:", e);
+        Swal.fire({
+          title: "Error",
+          text: "Time slot is already booked! Please choose other time.",
+          icon: "error",
+        })
+      }finally {
+        console.log("Process finished")
+        setLoading(false);
       }
     } else {
       Swal.fire({
@@ -304,7 +312,7 @@ function AppointmentForm(): JSX.Element {
     );
   }
   return(
-    <div className='Appointment_Main_div pinkBg mt-5 gap-5 p-5' id="container">
+    <div className='flexCenter widthHeight-300 pinkBg mt-5 gap-5 p-5' id="container">
       <CircularProgress color="inherit" />
     </div>
     );
