@@ -259,7 +259,7 @@ function AppointmentForm(): JSX.Element {
           <fieldset>
             <label className='text-dark' htmlFor="appointment_for">Service</label>
             <select id="serviceID" name="serviceID" style={{ width: '100%' }} required value={formData.serviceID} onChange={handleChange}>
-              <option disabled value="">Gewünschte Zeit</option> {/* Placeholder option */}
+              <option disabled value="">Gewünschter Service</option> {/* Placeholder option */}
               {allServices.map(e => (
                 <option value={e.id}>{e.title} <span className='fw-bold'>{e.price}&euro;</span></option>
               ))}
@@ -281,7 +281,7 @@ function AppointmentForm(): JSX.Element {
 
             <br />
 
-            <label className='text-dark' htmlFor="time">Time:</label>
+            <label className='text-dark' htmlFor="time">Uhrzeit</label>
             <div style={{ maxHeight: '200px', overflowY: 'auto', display: "flex", alignItems: 'center', flexDirection: "column" }} className=''>
               {availableTimes?.map((e, i) => (
                 <p onClick={() => setFormData({ ...formData, time: e })}
