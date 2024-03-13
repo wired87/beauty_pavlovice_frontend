@@ -9,14 +9,15 @@ import OffcanvasBootstrap from "../../Offcanvas";
 import HeaderItems from "./HeaderItems";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { MainContext } from "../../../Context/MainContext";
+import {useNavigate} from "react-router-dom";
 
 const Header: React.FC = () => {
 
   const { show, updateShow } = useContext(MainContext);
+  const navigate = useNavigate();
 
   const transformHeader = () => {
     const width: number = WindowWidth();
-    console.log("width:", width);
     if (width > 960) {
       return (
         <HeaderItems />
@@ -32,7 +33,7 @@ const Header: React.FC = () => {
   return (
     <>
       <header id="home" className={"headerContainer d-flex justify-content-center align-items-center flex-row "}>
-        <img src={logoNoBg} className={"logo"} alt="logoNoBg.png" />
+          <img src={logoNoBg} className={"logo"} alt="logoNoBg.png" onClick={() => navigate("/")}/>
         {
           transformHeader()
         }
