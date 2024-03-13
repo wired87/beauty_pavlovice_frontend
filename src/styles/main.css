@@ -73,4 +73,19 @@
 .borderBottom {
   border-bottom: 1px solid rgba(0,0,0,.5);
 }
-
+.privacy-text-field {
+  text-align: start;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 50px;
+  width: 80vw;
+  height: auto;
+  background-color: rgb(255, 241, 220);
+}
+.privacy-main {
+  width: 100vw;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}

@@ -13,6 +13,7 @@ import Appointment from "./screens/Appointment/Appointment";
 import Category from './screens/Category';
 import Product from './screens/Product';
 import OpeningTimeMain from './components/Home/openingTime/OpeningTimeMain';
+import Imprint from "./screens/Imprint";
 
 const App: React.FC = () => {
   return (
@@ -28,10 +29,8 @@ const App: React.FC = () => {
             <Route path="category" element={<Category />} />
             <Route path="product/:productName" element={<Product />} />
             <Route path="/offnungszeiten" element={<OpeningTimeMain />} />
+            <Route path="/imprint" element={<Imprint />} />
 
-            {/* <Route path="Eyelashes" element={<Eyelashes />} /> */}
-            {/* <Route path="Gesichmassage" element={<Gesichmassage />} /> */}
-            {/* <Route path="Peeling" element={<Peeling />} /> */}
           </Routes>
           <Footer />
         </Router>

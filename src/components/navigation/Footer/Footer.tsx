@@ -1,8 +1,8 @@
 import React, { memo } from "react";
 import "../../../styles/coponentStyles/nav.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEnvelope, faPhone, } from '@fortawesome/free-solid-svg-icons'
-import { faInstagram, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
+import { faPhone, } from '@fortawesome/free-solid-svg-icons'
+import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 
 
 const Footer: React.FC = () => {
@@ -25,22 +25,15 @@ const Footer: React.FC = () => {
         </a></li> */}
         <li className="social-icon__item"><a className="social-icon__link" href="tel:+1234567890">
           <FontAwesomeIcon size="1x" icon={faPhone} />
-
         </a></li>
-        {/* <li className="social-icon__item"><a className="social-icon__link" href="https://api.whatsapp.com/send/?phone=%2B4915252197474&text&type=phone_number&app_absent=0">
-          <FontAwesomeIcon size="1x" icon={faWhatsapp} />
-
-        </a></li> */}
       </ul>
       <ul className="menu">
         <li className="menu__item"><a className="menu__link" href="#">Home</a></li>
-        {/* <li className="menu__item"><a className="menu__link" href="#">About</a></li> */}
-        <li className="menu__item"><a className="menu__link" href="Category">Services</a></li>
-        {/* <li className="menu__item"><a className="menu__link" href="#">Team</a></li> */}
-        <li className="menu__item"><a className="menu__link" href="Termin">Termin vereinbaren</a></li>
-
+        <li className="menu__item"><a className="menu__link" href="/category">Services</a></li>
+        <li className="menu__item"><a className="menu__link" href="/termin">Termin vereinbaren</a></li>
+        <li className="menu__item"><a className="menu__link" href="/imprint">Imprint</a></li>
       </ul>
-      <p>&copy;Powered by | Book in Beautiful</p>
+      <p>&copy;Powered by Anastasia Pavlovic | Beauty Bar Pavlovic</p>
     </footer>
   );
 }
