@@ -4,7 +4,7 @@ import { apiServices } from '../../services/api.services';
 import moment from 'moment';
 import Swal from 'sweetalert2';
 import DatePicker from "react-datepicker";
-
+import CircularProgress from '@mui/material/CircularProgress';
 import "react-datepicker/dist/react-datepicker.css";
 
 interface FormData {
@@ -41,7 +41,7 @@ function AppointmentForm(): JSX.Element {
   const [allAppointments, setAllAppointments] = useState<Appointment[]>([]);
   const [formData, setFormData] = useState<FormData>(initialState);
   const [minDate, setMinDate] = useState<string>('');
-
+  const [loading, setLoading] = useState<boolean>(false);
   const [availableTimes, setAvailableTimes] = useState<string[]>([]);
   const shopOpeningTime:string = "08:00";
   const shopClosingTime:string = "17:00";
@@ -62,7 +62,7 @@ function AppointmentForm(): JSX.Element {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
-
+    setLoading(true);
     let isAvailable = getAvailability();
 
     if (isAvailable == 1) {
@@ -76,6 +76,7 @@ function AppointmentForm(): JSX.Element {
         startTime: formattedDate
       }
       try {
+        console.log("Data sent:", data);
         let response = await apiServices.postAppointment({ data })
         console.log("Appointment Response received", response)
         if (response?.data?.status === 200) {
@@ -237,70 +238,77 @@ function AppointmentForm(): JSX.Element {
   const disabledDates = (date: Date) => {
     return isWeekend(date);
   };
-
-  return (
-    <div className='Appointment_Main_div pinkBg mt-5 gap-5 p-5' id="container">
-      <div id="body_header">
-        <p style={{ fontFamily: "Montserrat, sans-serif", fontWeight: "500" }} data-aos="fade-left" >Buche einen Termin</p>
-      </div>
-      <div id="body_header">
-        <p style={{ fontFamily: "Montserrat, sans-serif", fontWeight: "300", fontSize: 16 }} data-aos="fade-right">
-          Unsere Öffnungszeiten (Mo - Fr 08:00 - 18:00 Uhr )
-        </p>
-      </div>
-      <form className='mt-3' onSubmit={handleSubmit}>
-        <fieldset>
-          <label className='text-dark' htmlFor="name">Name</label>
-          <input type="text" id="lastName" name="lastName" placeholder="Enter your Name" required value={formData.lastName} onChange={handleChange} />
-          <label className='text-dark' htmlFor="tel">Mobil</label>
-          <input type="tel" id="contactTel" placeholder="Include country code" name="contactTel" value={formData.contactTel} onChange={handleChange} />
-        </fieldset>
-        <fieldset>
-          <label className='text-dark' htmlFor="appointment_for">Service</label>
-          <select id="serviceID" name="serviceID" style={{ width: '100%' }} required value={formData.serviceID} onChange={handleChange}>
-            <option disabled value="">Gewünschte Zeit</option> {/* Placeholder option */}
-            {allServices.map(e => (
-              <option value={e.id}>{e.title} <span className='fw-bold'>{e.price}&euro;</span></option>
-            ))}
-          </select>
-          <label className='text-dark mt-5' htmlFor="date">Datum</label>
-
-          <DatePicker
-            id="datePicker"
-            selected={formData?.date}
-            onChange={(date: Date | null) => setFormData({
-              ...formData,
-              date: date
-            })}
-            minDate={today}
-            filterDate={disabledDates}
-            placeholderText="Select a date"
-            className="custom-date-picker-input"
-          />
-
-          <br />
-
-          <label className='text-dark' htmlFor="time">Time:</label>
-          <div style={{ maxHeight: '200px', overflowY: 'auto', display: "flex", alignItems: 'center', flexDirection: "column" }} className=''>
-            {availableTimes?.map((e, i) => (
-              <p onClick={() => setFormData({ ...formData, time: e })}
-                 style={{ justifyContent: "center", borderRadius: "100px", backgroundColor: e == formData.time ? 'green' : '' }}
-                 key={i} className='btn btn-outline-success d-flex flex-col w-50'>
-                {e}
-              </p>
-            ))}
-          </div>
-          <fieldset>
-            <label className='text-dark' htmlFor="name">Zusätzliche Informationen?</label>
-            <input type="text" id="information" name="information" placeholder="" required value={formData.information} onChange={handleChange} />
-          </fieldset>
-        </fieldset>
-        <div className='d-flex justify-content-center align-items-center' >
-          <button className='btn text-white bg-dark' type="submit">Termin buchen!</button>
+  if (!loading) {
+    return (
+      <div className='Appointment_Main_div pinkBg mt-5 gap-5 p-5' id="container">
+        <div id="body_header">
+          <p style={{ fontFamily: "Montserrat, sans-serif", fontWeight: "500" }} data-aos="fade-left" >Buche einen Termin</p>
         </div>
-      </form >
-    </div >
-  );
+        <div id="body_header">
+          <p style={{ fontFamily: "Montserrat, sans-serif", fontWeight: "300", fontSize: 16 }} data-aos="fade-right">
+            Unsere Öffnungszeiten (Mo - Fr 08:00 - 18:00 Uhr )
+          </p>
+        </div>
+        <form className='mt-3' onSubmit={handleSubmit}>
+          <fieldset>
+            <label className='text-dark' htmlFor="name">Name</label>
+            <input type="text" id="lastName" name="lastName" placeholder="Enter your Name" required value={formData.lastName} onChange={handleChange} />
+            <label className='text-dark' htmlFor="tel">Mobil</label>
+            <input type="tel" id="contactTel" placeholder="Include country code" name="contactTel" value={formData.contactTel} onChange={handleChange} />
+          </fieldset>
+          <fieldset>
+            <label className='text-dark' htmlFor="appointment_for">Service</label>
+            <select id="serviceID" name="serviceID" style={{ width: '100%' }} required value={formData.serviceID} onChange={handleChange}>
+              <option disabled value="">Gewünschte Zeit</option> {/* Placeholder option */}
+              {allServices.map(e => (
+                <option value={e.id}>{e.title} <span className='fw-bold'>{e.price}&euro;</span></option>
+              ))}
+            </select>
+            <label className='text-dark mt-5' htmlFor="date">Datum</label>
+
+            <DatePicker
+              id="datePicker"
+              selected={formData?.date}
+              onChange={(date: Date | null) => setFormData({
+                ...formData,
+                date: date
+              })}
+              minDate={today}
+              filterDate={disabledDates}
+              placeholderText="Select a date"
+              className="custom-date-picker-input"
+            />
+
+            <br />
+
+            <label className='text-dark' htmlFor="time">Time:</label>
+            <div style={{ maxHeight: '200px', overflowY: 'auto', display: "flex", alignItems: 'center', flexDirection: "column" }} className=''>
+              {availableTimes?.map((e, i) => (
+                <p onClick={() => setFormData({ ...formData, time: e })}
+                   style={{ justifyContent: "center", borderRadius: "100px", backgroundColor: e == formData.time ? 'green' : '' }}
+                   key={i} className='btn btn-outline-success d-flex flex-col w-50'>
+                  {e}
+                </p>
+              ))}
+            </div>
+            <fieldset>
+              <label className='text-dark' htmlFor="name">Zusätzliche Informationen?</label>
+              <input type="text" id="information" name="information" placeholder="" value={formData.information} onChange={handleChange} />
+            </fieldset>
+          </fieldset>
+          <div className='d-flex justify-content-center align-items-center' >
+            <button className='btn text-white bg-dark' type="submit">Termin buchen!</button>
+          </div>
+        </form >
+      </div >
+    );
+  }else {
+    return(
+      <div className='Appointment_Main_div pinkBg mt-5 gap-5 p-5' id="container">
+        <CircularProgress color="inherit" />
+      </div>
+      );
+  }
 }
 
 export default AppointmentForm;
