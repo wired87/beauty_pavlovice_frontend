@@ -2,8 +2,6 @@ import React, { useState, ChangeEvent, FormEvent, useContext, useEffect, useCall
 import { ServiceContext } from '../../Context/ContextProvider/ServicesContextProvide';
 import { apiServices } from '../../services/api.services';
 import moment from 'moment';
-import SuccessModal from '../../components/Modal/success.modal';
-import FailedModal from '../../components/Modal/failed.modal';
 import Swal from 'sweetalert2';
 import DatePicker from "react-datepicker";
 
@@ -44,17 +42,9 @@ function AppointmentForm(): JSX.Element {
   const [formData, setFormData] = useState<FormData>(initialState);
   const [minDate, setMinDate] = useState<string>('');
 
-  const errorCodes = [5, 6, 7, 8, 9];
-
-  // Appointment Page
-  const [status, setStatus] = useState<number>(0);
-  const statusContent = useCallback((): React.ReactNode | undefined => {
-    if (status === 200) {
-      return <SuccessModal />;
-    } else if (errorCodes.includes(status)) {
-      return <FailedModal />;
-    }
-  }, [status]);
+  const [availableTimes, setAvailableTimes] = useState<string[]>([]);
+  const shopOpeningTime:string = "08:00";
+  const shopClosingTime:string = "17:00";
 
   useEffect(() => {
     getAllBookings();
@@ -85,22 +75,26 @@ function AppointmentForm(): JSX.Element {
         ...formData,
         startTime: formattedDate
       }
-
-      let response = await apiServices.postAppointment({ data })
-      if (response?.data?.status === 200) {
-        Swal.fire({
-          title: "Success",
-          text: "Appointment Successfully Booked!",
-          icon: "success",
-        })
-        getAllBookings();
-        setFormData(initialState)
-      } else {
-        Swal.fire({
-          title: "Error",
-          text: "Something went wrong.",
-          icon: "error",
-        })
+      try {
+        let response = await apiServices.postAppointment({ data })
+        console.log("Appointment Response received", response)
+        if (response?.data?.status === 200) {
+          Swal.fire({
+            title: "Success",
+            text: "Appointment Successfully Booked!",
+            icon: "success",
+          })
+          getAllBookings();
+          setFormData(initialState)
+        } else {
+          Swal.fire({
+            title: "Error",
+            text: "Something went wrong.",
+            icon: "error",
+          })
+        }
+      }catch(e:unknown) {
+        console.log("Error while request:", e);
       }
     } else {
       Swal.fire({
@@ -141,6 +135,7 @@ function AppointmentForm(): JSX.Element {
     return filter;
   }, [formData?.date])
 
+
   const getAvailability = useCallback(() => {
     if (!formData.time || !formData.date) return 0; // If no time or date selected, return 0 availability
 
@@ -166,9 +161,7 @@ function AppointmentForm(): JSX.Element {
     return isAvailable ? 1 : 0;
   }, [allAppointments, formData.date, formData.time]);
 
-  const [availableTimes, setAvailableTimes] = useState<string[]>([]);
-  const shopOpeningTime = "08:00";
-  const shopClosingTime = "17:00";
+
 
   // Function to generate time slots between opening and closing time
   const generateTimeSlots = (): string[] => {
@@ -297,7 +290,7 @@ function AppointmentForm(): JSX.Element {
           </fieldset>
         </fieldset>
         <div className='d-flex justify-content-center align-items-center' >
-          <button className='btn text-white bg-dark' type="submit">Request For Appointment</button>
+          <button className='btn text-white bg-dark' type="submit">Termin buchen!</button>
         </div>
       </form >
     </div >
