@@ -302,13 +302,13 @@ function AppointmentForm(): JSX.Element {
         </form >
       </div >
     );
-  }else {
-    return(
-      <div className='Appointment_Main_div pinkBg mt-5 gap-5 p-5' id="container">
-        <CircularProgress color="inherit" />
-      </div>
-      );
   }
+  return(
+    <div className='Appointment_Main_div pinkBg mt-5 gap-5 p-5' id="container">
+      <CircularProgress color="inherit" />
+    </div>
+    );
+
 }
 
 export default AppointmentForm;
