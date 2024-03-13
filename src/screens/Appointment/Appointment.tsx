@@ -268,9 +268,9 @@ function AppointmentForm(): JSX.Element {
           <fieldset>
             <label className='text-dark' htmlFor="appointment_for">Service</label>
             <select id="serviceID" name="serviceID" style={{ width: '100%' }} required value={formData.serviceID} onChange={handleChange}>
-              <option disabled value="">Gewünschter Service</option> {/* Placeholder option */}
-              {allServices.map(e => (
-                <option value={e.id}>{e.title} <span className='fw-bold'>{e.price}&euro;</span></option>
+              <option disabled value="">Gewünschter Service</option>
+              {allServices.map(item => (
+                <option value={item.id}>{item.title} ({item.category}) - {item.duration} <span className='fw-bold'>{item.price}&euro;</span></option>
               ))}
             </select>
             <label className='text-dark mt-5' htmlFor="date">Datum</label>
