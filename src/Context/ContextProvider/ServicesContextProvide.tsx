@@ -6,7 +6,7 @@ interface Service {
   title: string;
   price: string;
   duration: string;
-  category: string;
+  sub_category: string;
 }
 
 interface ServicesContextProviderProps {
