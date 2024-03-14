@@ -11,7 +11,9 @@ const Category: React.FC = () => {
                 {services.map((service, index) => (
                     <div key={index} className="col-md-4 mt-2 d-flex justify-content-center align-items-center">
                         <div style={{ marginBottom: "20%" }} className="ui-card d-flex justify-content-center align-items-center rounded">
-                            <img src={service.imageUrl} className="card-img-top" alt={service.title} />
+                            <Link to={service.link}>
+                                <img src={service.imageUrl} className="card-img-top" alt={service.title} />
+                            </Link>
                             <div className="description card-body">
                                 <h4 className="card-title">{service.title}</h4>
                                 <Link to={service.link} className="ReadMore " style={{ backgroundColor: "pink", color: "black" }}>Read More</Link>

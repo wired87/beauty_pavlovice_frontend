@@ -139,15 +139,15 @@ const Product: React.FC = () => {
                     </div>
                     <div className='col-md-6 p-4'>
                         <div className='d-flex flex-column '>
-                            <h3 className="font-weight-bold">{find?.tile || ""}</h3>
+                            <h3 style={{ fontFamily: "Cormorant Garamond, serif", fontStyle: "italic" }} className="">{find?.tile || ""}</h3>
                             {services.length ? (
                                 <>
                                     {services.map((item, index) => (
                                         <div className='d-flex text-grey align-items-center justify-content-between mb-1'>
-                                            <p key={services[index].id} className='m-0 fs-5'>
+                                            <p style={{ fontFamily: "Cormorant Garamond, serif", color: "black" }} key={services[index].id} className='category_items m-0 fs-5'>
                                                 {item.title}
                                             </p>
-                                            <span className='mx-3 text-dark fw-bold'>{item.price} &euro; </span>
+                                            <span style={{ fontFamily: "roboto,sanserif" }} className='  mx-3 text-dark  '>{item.price} &euro; </span>
                                         </div>
                                     ))}
                                     <button style={{ backgroundColor: "black", color: "white", border: "none" }} className="fw-bold mt-5 btn w-50" onClick={handleBookNow}>Book Now</button>
@@ -172,13 +172,13 @@ const Product: React.FC = () => {
                                 />
                             </div>
                             <div className={`col-md-6 p-4`} style={{ backgroundColor: '' }}>
-                                <h3 className="font-weight-light">WIMPERNVERLÄNGERUNG</h3>
-                                {find.description && <p className='fs-5'>{find.description}</p>}
+                                <h3 style={{ fontFamily: "Cormorant Garamond, serif", fontStyle: "italic" }} >WIMPERNVERLÄNGERUNG</h3>
+                                {find.description && <p style={{ fontFamily: "Cormorant Garamond, serif", color: "black" }} className='fs-5'>{find.description}</p>}
                                 {find.categories && (
                                     <>
-                                        <p className='fw-bold fs-5'>We have all these:</p>
+                                        <p style={{ fontFamily: "Cormorant Garamond, serif", fontStyle: "italic", fontWeight: "bold" }} className='fs-5'>We have all these:</p>
                                         {find.categories.map((category, index) => (
-                                            <p key={index} className='mb-2 fs-5'>{category}</p>
+                                            <p style={{ fontFamily: "Cormorant Garamond, serif", color: "black" }} key={index} className='mb-2 fs-5'>{category}</p>
                                         ))}
                                     </>
                                 )}
@@ -203,15 +203,15 @@ const Product: React.FC = () => {
 
                                 <div className={`col-md-6 p-4`}>
                                     <div className='d-flex flex-column'>
-                                        <h3 className="font-weight-light">{section.title}</h3>
+                                        <h3 style={{ fontFamily: "Cormorant Garamond, serif", fontStyle: "italic" }}>{section.title}</h3>
                                         {services.length ? (
                                             <>
                                                 {section.index.map((index) => (
                                                     <div className='d-flex align-items-center justify-content-between mb-1'>
-                                                        <p key={services[index].id} className='category_items m-0 '>
+                                                        <p style={{ fontFamily: "Cormorant Garamond, serif", color: "black" }} key={services[index].id} className='category_items m-0 '>
                                                             {services[index].title}
                                                         </p>
-                                                        <span style={{ display: "flex", flexWrap: "wrap", overflow: "hidden" }} className='category_items mx-3 text-dark fw-bold'>{services[index].price} &euro;</span>
+                                                        <span style={{ display: "flex", flexWrap: "wrap", overflow: "hidden", fontFamily: "roboto,sanserif" }} className=' text-dark '>{services[index].price} &euro;</span>
                                                     </div>
                                                 ))}
                                                 <button style={{ backgroundColor: "black", color: "white", border: "none" }} className="fw-bold mt-5 btn w-50" onClick={handleBookNow}>Book Now</button>
