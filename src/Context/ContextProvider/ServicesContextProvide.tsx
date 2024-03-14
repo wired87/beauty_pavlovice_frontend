@@ -5,13 +5,23 @@ interface Service {
   id: string;
   title: string;
   price: string;
+  duration: string;
+  sub_category: string;
 }
 
 interface ServicesContextProviderProps {
   children: ReactNode;
 }
 
-export const ServiceContext = createContext<{ allServices: Service[]; setAllServices: React.Dispatch<React.SetStateAction<Service[]>> }>({ allServices: [], setAllServices: () => { } });
+export const ServiceContext = createContext<{
+  allServices: Service[];
+  setAllServices: React.Dispatch<React.SetStateAction<Service[]>>
+}>(
+  {
+    allServices: [],
+    setAllServices: () => { }
+  }
+);
 
 const ServicesContextProvider: React.FC<ServicesContextProviderProps> = ({ children }) => {
   const [allServices, setAllServices] = useState<Service[]>([]);

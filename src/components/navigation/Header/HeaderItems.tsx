@@ -21,14 +21,9 @@ const headerButtons: HeaderButtonTypes[] = [
   },
   {
     href: "/category",
-    title: "Kategorie",
+    title: "Services",
     className: "current"
   },
-  // {
-  //   href: "#home",
-  //   title: "Home",
-  //   className: "current"
-  // }
 ];
 
 const HeaderItems: React.FC = () => {

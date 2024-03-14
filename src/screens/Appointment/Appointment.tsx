@@ -2,12 +2,11 @@ import React, { useState, ChangeEvent, FormEvent, useContext, useEffect, useCall
 import { ServiceContext } from '../../Context/ContextProvider/ServicesContextProvide';
 import { apiServices } from '../../services/api.services';
 import moment from 'moment';
-import SuccessModal from '../../components/Modal/success.modal';
-import FailedModal from '../../components/Modal/failed.modal';
 import Swal from 'sweetalert2';
 import DatePicker from "react-datepicker";
-
+import CircularProgress from '@mui/material/CircularProgress';
 import "react-datepicker/dist/react-datepicker.css";
+import Select from 'react-select';
 
 interface FormData {
   lastName: string;
@@ -43,36 +42,34 @@ function AppointmentForm(): JSX.Element {
   const [allAppointments, setAllAppointments] = useState<Appointment[]>([]);
   const [formData, setFormData] = useState<FormData>(initialState);
   const [minDate, setMinDate] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(false);
+  const [availableTimes, setAvailableTimes] = useState<string[]>([]);
+  const shopOpeningTime:string = "08:00";
+  const shopClosingTime:string = "17:00";
+  const today = new Date();
 
-  const errorCodes = [5, 6, 7, 8, 9];
-
-  // Appointment Page
-  const [status, setStatus] = useState<number>(0);
-  const statusContent = useCallback((): React.ReactNode | undefined => {
-    if (status === 200) {
-      return <SuccessModal />;
-    } else if (errorCodes.includes(status)) {
-      return <FailedModal />;
-    }
-  }, [status]);
 
   useEffect(() => {
-    getAllBookings();
+    getBookedAppointments()
+      .then(() => console.log("Collect all booked appointments..."));
     setMinDate(calculateMinDate());
   }, []);
+
 
   useEffect(() => {
     getTodayAppoinments();
   }, [formData?.date]);
+
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>): void => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
-
+    setLoading(true);
     let isAvailable = getAvailability();
 
     if (isAvailable == 1) {
@@ -85,22 +82,35 @@ function AppointmentForm(): JSX.Element {
         ...formData,
         startTime: formattedDate
       }
-
-      let response = await apiServices.postAppointment({ data })
-      if (response?.data?.status === 200) {
-        Swal.fire({
-          title: "Success",
-          text: "Appointment Successfully Booked!",
-          icon: "success",
-        })
-        getAllBookings();
-        setFormData(initialState)
-      } else {
+      try {
+        console.log("Data sent:", data);
+        let response = await apiServices.postAppointment({ data })
+        console.log("Appointment Response received", response)
+        if (response?.data?.status === 200) {
+          Swal.fire({
+            title: "Success",
+            text: "Appointment Successfully Booked!",
+            icon: "success",
+          })
+          await getBookedAppointments();
+          setFormData(initialState)
+        } else {
+          Swal.fire({
+            title: "Error",
+            text: "Something went wrong.",
+            icon: "error",
+          })
+        }
+      }catch(e:unknown) {
+        console.log("Error while request:", e);
         Swal.fire({
           title: "Error",
-          text: "Something went wrong.",
+          text: "Time slot is already booked! Please choose other time.",
           icon: "error",
         })
+      }finally {
+        console.log("Process finished")
+        setLoading(false);
       }
     } else {
       Swal.fire({
@@ -111,7 +121,8 @@ function AppointmentForm(): JSX.Element {
     }
   };
 
-  const getAllBookings = async () => {
+
+  const getBookedAppointments = async () => {
     try {
       const response = await apiServices.getAllAppointment();
       if (Array.isArray(response.data?.message)) {
@@ -130,8 +141,8 @@ function AppointmentForm(): JSX.Element {
         });
         setAllAppointments(newData);
       }
-    } catch (error) {
-      console.log("Error in getting all bookings", error);
+    } catch (e:unknown) {
+      console.log("Error in getting all bookings", e);
     }
   }
 
@@ -140,6 +151,7 @@ function AppointmentForm(): JSX.Element {
     setBookedAppointment(filter)
     return filter;
   }, [formData?.date])
+
 
   const getAvailability = useCallback(() => {
     if (!formData.time || !formData.date) return 0; // If no time or date selected, return 0 availability
@@ -166,9 +178,6 @@ function AppointmentForm(): JSX.Element {
     return isAvailable ? 1 : 0;
   }, [allAppointments, formData.date, formData.time]);
 
-  const [availableTimes, setAvailableTimes] = useState<string[]>([]);
-  const shopOpeningTime = "08:00";
-  const shopClosingTime = "17:00";
 
   // Function to generate time slots between opening and closing time
   const generateTimeSlots = (): string[] => {
@@ -181,6 +190,7 @@ function AppointmentForm(): JSX.Element {
     return timeSlots;
   };
 
+
   // Function to increment time by 30 minutes
   const incrementTime = (time: string): string => {
     const [hours, minutes] = time.split(':').map(Number);
@@ -192,6 +202,7 @@ function AppointmentForm(): JSX.Element {
     }
     return `${String(newHours).padStart(2, '0')}:${String(newMinutes).padStart(2, '0')}`;
   };
+
 
   // Function to filter out booked time slots
   const filterBookedTimes = (timeSlots: string[], appointment: Appointment): string[] => {
@@ -208,7 +219,8 @@ function AppointmentForm(): JSX.Element {
     });
   };
 
-  // Simulated effect to update available time slots based on selected date
+
+  // Update available time slots based on selected date
   useEffect(() => {
     // Generate time slots between shop opening and closing time
     let availableTimeSlots = generateTimeSlots();
@@ -225,7 +237,8 @@ function AppointmentForm(): JSX.Element {
     setAvailableTimes(availableTimeSlots);
   }, [formData?.date, bookedAppoinment]);
 
-  // Function to calculate the minimum date (disable dates before today)
+
+  // Calculate the minimum date (disable dates before today)
   const calculateMinDate = (): string => {
     const today = new Date();
     const year = today.getFullYear();
@@ -239,69 +252,85 @@ function AppointmentForm(): JSX.Element {
     return day !== 0 && day !== 6; // 0 is Sunday, 6 is Saturday
   };
 
-  const today = new Date();
 
   const disabledDates = (date: Date) => {
     return isWeekend(date);
   };
 
-  return (
-    <div className='Appointment_Main_div pinkBg mt-5 gap-5 p-5' id="container ">
-      <div id="body_header">
-        <p style={{ fontFamily: "Montserrat, sans-serif", fontWeight: "500" }} data-aos="fade-left" >Make your appointment </p>
-      </div>
-      <div id="body_header">
-        <p style={{ fontFamily: "Montserrat, sans-serif", fontWeight: "300" }} data-aos="fade-right">Opening hours (Mo - Fr 08:00 - 18:00 Uhr )</p>
-      </div>
-      <form className='mt-3' onSubmit={handleSubmit}>
-        <fieldset>
-          <label className='text-dark' htmlFor="name">Name:</label>
-          <input type="text" id="lastName" name="lastName" placeholder="Enter your Name" required value={formData.lastName} onChange={handleChange} />
-          <label className='text-dark' htmlFor="tel">Contact Number:</label>
-          <input type="tel" id="contactTel" placeholder="Include country code" name="contactTel" value={formData.contactTel} onChange={handleChange} />
-        </fieldset>
-        <fieldset>
-          <label className='text-dark' htmlFor="appointment_for">Appointment for:</label>
-          <select id="serviceID" name="serviceID" style={{ width: '100%' }} required value={formData.serviceID} onChange={handleChange}>
-            <option disabled value="">Select your Appointment</option> {/* Placeholder option */}
-            {allServices.map(e => (
-              <option value={e.id}>{e.title} <span className='fw-bold'>{e.price}&euro;</span></option>
-            ))}
-          </select>
-          <label className='text-dark mt-5' htmlFor="date">Date:</label>
 
-          <DatePicker
-            id="datePicker"
-            selected={formData?.date}
-            onChange={(date: Date | null) => setFormData({
-              ...formData,
-              date: date
-            })}
-            minDate={today}
-            filterDate={disabledDates}
-            placeholderText="Select a date"
-            className="custom-date-picker-input"
-          />
-
-          <br />
-
-          <label className='text-dark' htmlFor="time">Time:</label>
-          <div style={{ maxHeight: '200px', overflowY: 'auto', display: "flex", alignItems: 'center', flexDirection: "column" }} className=''>
-            {availableTimes?.map((e, i) => (
-              <p onClick={() => setFormData({ ...formData, time: e })} style={{ justifyContent: "center", borderRadius: "100px", backgroundColor: e == formData.time ? 'green' : '' }} key={i} className='btn btn-outline-success d-flex flex-col w-50   '>{e}</p>
-            ))}
-          </div>
-          <fieldset>
-            <label className='text-dark' htmlFor="name">Information:</label>
-            <input type="text" id="information" name="information" placeholder="" required value={formData.information} onChange={handleChange} />
-          </fieldset>
-        </fieldset>
-        <div className='d-flex justify-content-center align-items-center' >
-          <button className='btn text-white bg-dark' type="submit">Request For Appointment</button>
+  if (!loading) {
+    return (
+      <div className='Appointment_Main_div pinkBg mt-5 gap-5 p-5' id="container">
+        <div id="body_header">
+          <p style={{ fontFamily: "Montserrat, sans-serif", fontWeight: "500" }} data-aos="fade-left" >Buche einen Termin</p>
         </div>
-      </form >
-    </div >
-  );
+        <div id="body_header">
+          <p style={{ fontFamily: "Montserrat, sans-serif", fontWeight: "300", fontSize: 16 }} data-aos="fade-right">
+            Unsere Öffnungszeiten (Mo - Fr 08:00 - 18:00 Uhr )
+          </p>
+        </div>
+        <form className='mt-3' onSubmit={handleSubmit}>
+          <fieldset>
+            <label className='text-dark' htmlFor="name">Name</label>
+            <input type="text" id="lastName" name="lastName" placeholder="Enter your Name" required value={formData.lastName} onChange={handleChange} />
+            <label className='text-dark' htmlFor="tel">Mobil</label>
+            <input type="tel" id="contactTel" placeholder="Include country code" name="contactTel" value={formData.contactTel} onChange={handleChange} />
+          </fieldset>
+          <fieldset>
+            <label className='text-dark' htmlFor="appointment_for">Service</label>
+            <select id="serviceID" name="serviceID" style={{ width: '100%' }} required value={formData.serviceID} onChange={handleChange}>
+              <option disabled value="">Gewünschter Service</option>
+              {allServices.map(item => (
+                <option className={""} value={item.id}>
+                  {item.title} {item.sub_category} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{item.duration} h -
+                    {item.price}&euro;
+                </option>
+              ))}
+            </select>
+            <label className='text-dark mt-5' htmlFor="date">Datum</label>
+
+            <DatePicker
+              id="datePicker"
+              selected={formData?.date}
+              onChange={(date: Date | null) => setFormData({
+                ...formData,
+                date: date
+              })}
+              minDate={today}
+              filterDate={disabledDates}
+              placeholderText="Select a date"
+              className="custom-date-picker-input"
+            />
+
+            <br />
+
+            <label className='text-dark' htmlFor="time">Uhrzeit</label>
+            <div style={{ maxHeight: '200px', overflowY: 'auto', display: "flex", alignItems: 'center', flexDirection: "column" }} className=''>
+              {availableTimes?.map((e, i) => (
+                <p onClick={() => setFormData({ ...formData, time: e })}
+                   style={{ justifyContent: "center", borderRadius: "100px", backgroundColor: e == formData.time ? 'green' : '' }}
+                   key={i} className='btn btn-outline-success d-flex flex-col w-50'>
+                  {e}
+                </p>
+              ))}
+            </div>
+            <fieldset>
+              <label className='text-dark' htmlFor="name">Zusätzliche Informationen?</label>
+              <input type="text" id="information" name="information" placeholder="" value={formData.information} onChange={handleChange} />
+            </fieldset>
+          </fieldset>
+          <div className='d-flex justify-content-center align-items-center' >
+            <button className='btn text-white bg-dark' type="submit">Termin buchen!</button>
+          </div>
+        </form >
+      </div >
+    );
+  }
+  return(
+    <div className='flexCenter widthHeight-300 pinkBg mt-5 gap-5 p-5' id="container">
+      <CircularProgress color="inherit" />
+    </div>
+    );
 }
 
 export default AppointmentForm;

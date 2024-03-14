@@ -150,7 +150,7 @@ const Product: React.FC = () => {
                                             <span style={{ fontFamily: "roboto,sanserif" }} className='  mx-3 text-dark  '>{item.price} &euro; </span>
                                         </div>
                                     ))}
-                                    <button style={{ backgroundColor: "black", color: "white", border: "none" }} className="fw-bold mt-5 btn w-50" onClick={handleBookNow}>Book Now</button>
+                                    <button style={{ backgroundColor: "black", color: "white", border: "none" }} className="fw-bold mt-5 btn w-50" onClick={handleBookNow}>Termin vereinbaren</button>
                                 </>
                             ) : null}
                         </div>
@@ -214,7 +214,7 @@ const Product: React.FC = () => {
                                                         <span style={{ display: "flex", flexWrap: "wrap", overflow: "hidden", fontFamily: "roboto,sanserif" }} className=' text-dark '>{services[index].price} &euro;</span>
                                                     </div>
                                                 ))}
-                                                <button style={{ backgroundColor: "black", color: "white", border: "none" }} className="fw-bold mt-5 btn w-50" onClick={handleBookNow}>Book Now</button>
+                                                <button style={{ backgroundColor: "black", color: "white", border: "none" }} className="fw-bold mt-5 btn w-50" onClick={handleBookNow}>Termin vereinbaren</button>
                                             </>
                                         ) : null}
                                     </div>
