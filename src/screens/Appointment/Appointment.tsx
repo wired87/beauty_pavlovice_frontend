@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 import DatePicker from "react-datepicker";
 import CircularProgress from '@mui/material/CircularProgress';
 import "react-datepicker/dist/react-datepicker.css";
-import Select from 'react-select';
+// import Select from 'react-select';
 
 interface FormData {
   lastName: string;
@@ -44,8 +44,8 @@ function AppointmentForm(): JSX.Element {
   const [minDate, setMinDate] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
   const [availableTimes, setAvailableTimes] = useState<string[]>([]);
-  const shopOpeningTime:string = "08:00";
-  const shopClosingTime:string = "17:00";
+  const shopOpeningTime: string = "08:00";
+  const shopClosingTime: string = "17:00";
   const today = new Date();
 
 
@@ -101,14 +101,14 @@ function AppointmentForm(): JSX.Element {
             icon: "error",
           })
         }
-      }catch(e:unknown) {
+      } catch (e: unknown) {
         console.log("Error while request:", e);
         Swal.fire({
           title: "Error",
           text: "Time slot is already booked! Please choose other time.",
           icon: "error",
         })
-      }finally {
+      } finally {
         console.log("Process finished")
         setLoading(false);
       }
@@ -141,7 +141,7 @@ function AppointmentForm(): JSX.Element {
         });
         setAllAppointments(newData);
       }
-    } catch (e:unknown) {
+    } catch (e: unknown) {
       console.log("Error in getting all bookings", e);
     }
   }
@@ -283,7 +283,7 @@ function AppointmentForm(): JSX.Element {
               {allServices.map(item => (
                 <option className={""} value={item.id}>
                   {item.title} {item.sub_category} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{item.duration} h -
-                    {item.price}&euro;
+                  {item.price}&euro;
                 </option>
               ))}
             </select>
@@ -308,8 +308,8 @@ function AppointmentForm(): JSX.Element {
             <div style={{ maxHeight: '200px', overflowY: 'auto', display: "flex", alignItems: 'center', flexDirection: "column" }} className=''>
               {availableTimes?.map((e, i) => (
                 <p onClick={() => setFormData({ ...formData, time: e })}
-                   style={{ justifyContent: "center", borderRadius: "100px", backgroundColor: e == formData.time ? 'green' : '' }}
-                   key={i} className='btn btn-outline-success d-flex flex-col w-50'>
+                  style={{ justifyContent: "center", borderRadius: "100px", backgroundColor: e == formData.time ? 'green' : '' }}
+                  key={i} className='btn btn-outline-success d-flex flex-col w-50'>
                   {e}
                 </p>
               ))}
@@ -326,11 +326,11 @@ function AppointmentForm(): JSX.Element {
       </div >
     );
   }
-  return(
+  return (
     <div className='flexCenter widthHeight-300 pinkBg mt-5 gap-5 p-5' id="container">
       <CircularProgress color="inherit" />
     </div>
-    );
+  );
 }
 
 export default AppointmentForm;
