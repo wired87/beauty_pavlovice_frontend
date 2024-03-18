@@ -1,6 +1,6 @@
 export interface OpeningTimeTypes {
   day: string;
-  time: string;
+  time?: string;
 }
 
 export interface HeaderButtonTypes {

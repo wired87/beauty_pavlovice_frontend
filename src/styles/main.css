@@ -18,7 +18,11 @@
 }
 
 .pinkBg {
-  background-color: rgb(247,212,212);
+  background-color: rgb(224,213,175);
+}
+
+.pB10 {
+  padding-bottom: 100px;
 }
 
 .whiteColor {

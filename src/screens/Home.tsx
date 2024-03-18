@@ -1,5 +1,5 @@
 import React, { memo, useEffect } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import OpeningTimeMain from "../components/Home/openingTime/OpeningTimeMain";
 import title from "../assets/images/title.jpeg";
@@ -48,15 +48,18 @@ const Home: React.FC = () => {
           <h3 className="Address">
             Besuche uns!
           </h3 >
-          <h2 className="sub_address"> Reisewitzer Str. 20 <br />
+          <h3 className="sub_address"> Reisewitzer Str. 20 <br />
             Dresden
             <br />
             Sachsen
             <br />
-            01159 </h2>
-          <div style={{ marginTop: "120px" }} className="bookBtn d-flex">
-
-            <button style={{ fontFamily: "Montserrat,sans-serif" }} className="btn  w-50 text-bold bg-dark text-white" onClick={handleButtonClick} >
+            01159 <br/>
+            Tel: +49 152 52197474 <br/>
+            <br/>
+            oder
+          </h3>
+          <div className="bookBtn d-flex">
+            <button className="btn sub_address text-bold bg-dark text-white" onClick={handleButtonClick} >
               Vereinbare einen Termin
             </button>
           </div>

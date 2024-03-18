@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Category: React.FC = () => {
     return (
         <div style={{ marginTop: "80px" }} className='container pb-6' >
-            <h1 className='d-flex justify-content-center align-items-center' style={{ fontFamily: "Montserrat, sans-serif", fontStyle: "normal", fontWeight: "400", color: "#c29a44" }}>
+            <h1 className='d-flex justify-content-center align-items-center' style={{ fontFamily: "Montserrat, sans-serif", fontStyle: "normal", fontWeight: "400", color: "#c29a44", textAlign: "center" }}>
                 Entdecke Unsere Services
             </h1>
             <div className="row justify-content-around mt-5" data-aos="fade">
@@ -28,7 +28,7 @@ const Category: React.FC = () => {
 
 const services = [
     {
-        title: "wimpernverlängerung",
+        title: "Wimpernverlängerung",
         imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3Revbq9e2fgNWAcDgKP-C0nEA0sV3D9Wd5A&usqp=CAU",
         link: "/product/Wimpernverlängerung"
     },

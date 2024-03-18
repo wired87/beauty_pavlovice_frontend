@@ -103,16 +103,14 @@
   font-weight: 400;
 
   margin-top: 2rem;
-  font-family: "Montserrat, sans-serif";
+  font-family: "Cormorant Garamond", serif;
   font-style: normal;
 }
 
 .sub_address {
-  font-weight: 300;
   font-size: 24px;
-  font-family: "Fredoka", sans-serif;
-  font-style: normal;
-  /* margin-left: 50px; */
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
   margin-top: 10px;
 }
 
@@ -292,7 +290,7 @@ img {
 /* appointment card  */
 #body_header {
   width: auto;
-  margin: 0px auto;
+  margin: 0 auto;
   text-align: center;
   font-size: 25px;
   /* margin-top: 20px; */
@@ -304,7 +302,6 @@ form {
   padding: 10px 20px;
   background: rgb(231, 229, 229);
   border-radius: 8px;
-  margin-top: 10px;
 }
 
 /* Style disabled dates */
@@ -374,7 +371,6 @@ label {
   margin-bottom: 8px;
   /* padding: 6px; */
   font-weight: bold;
-  margin: 10px;
 }
 
 label.light {
@@ -469,7 +465,7 @@ form {
   }
 
   100% {
-    background-positon-x: 0px;
+    background-positon-x: 0;
   }
 }
 
