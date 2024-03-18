@@ -99,9 +99,7 @@
 }
 
 .Address {
-  /* text-align: center; */
   font-weight: 400;
-
   margin-top: 2rem;
   font-family: "Cormorant Garamond", serif;
   font-style: normal;
@@ -231,16 +229,13 @@ img {
   }
 
   .bookBtn {
-    margin-top: 10px !important;
+    margin-top: 10px;
+    border: 3px solid red;
   }
 
   .category_items {
     font-size: 16px !important;
   }
-
-
-
-
 }
 
 

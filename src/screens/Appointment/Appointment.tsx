@@ -266,7 +266,8 @@ function AppointmentForm(): JSX.Element {
         </div>
         <div id="body_header">
           <p style={{ fontFamily: "Montserrat, sans-serif", fontWeight: "300", fontSize: 16 }} data-aos="fade-right">
-            Unsere Öffnungszeiten (Mo - Fr 08:00 - 18:00 Uhr )
+            Mo - Fr 09:00 - 17:00 Uhr  <br/>
+            Samstag nach Vereinbarung
           </p>
         </div>
         <form className='mt-3' onSubmit={handleSubmit}>

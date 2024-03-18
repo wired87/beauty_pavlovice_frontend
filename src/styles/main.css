@@ -56,6 +56,18 @@
   align-items: center;
   justify-content: center;
 }
+.alignCenterStart {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.alignStartCenter {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+
 .widthHeight-300 {
   width: 300px;
   height: 300px;
@@ -74,8 +86,15 @@
 .paddingTop50 {
   padding-top: 50px;
 }
-
-
+.carouselHeading {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+}
+.carouselHeadingContainer {
+  position: absolute;
+  width: 50%;
+  height: 50%;
+}
 .borderLeft {
   border-left: 1px solid rgba(0,0,0,.5);
 }

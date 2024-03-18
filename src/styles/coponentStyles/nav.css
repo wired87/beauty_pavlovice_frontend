@@ -74,6 +74,7 @@
   position: absolute;
   height: 150%;
   margin: 0 auto;
+  cursor: pointer;
 }
 
 .headerButtonUl {
