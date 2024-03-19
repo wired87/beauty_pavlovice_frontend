@@ -7,6 +7,7 @@ import vase from "../../assets/images/vase.webp";
 import creme from "../../assets/images/creme.webp";
 import coffee from "../../assets/images/coffee.webp";
 import doc from "../../assets/images/doc.webp";
+import title2 from "../../assets/images/title2.jpg";
 import "../../styles/main.css";
 import "../../styles/coponentStyles/homeStyles/homeMain.css";
 import {useNavigate} from "react-router-dom";
@@ -24,12 +25,17 @@ const CarouselHome: React.FC = () => {
       keyboard={false}
       indicators={false}
       data-bs-theme="dark">
+
       <Carousel.Item>
         <img src={title} className={"titleImage"} alt="logoNoBg.png" onClick={() => navigate("/")}/>
       </Carousel.Item>
 
       <Carousel.Item>
         <img src={vase} className={"titleImage"} alt="logoNoBg.png" onClick={() => navigate("/")}/>
+      </Carousel.Item>
+
+      <Carousel.Item>
+        <img src={doc} className={"titleImage"} alt="logoNoBg.png" onClick={() => navigate("/")}/>
       </Carousel.Item>
 
       <Carousel.Item>
@@ -41,12 +47,13 @@ const CarouselHome: React.FC = () => {
       </Carousel.Item>
 
       <Carousel.Item>
-        <img src={coffee} className={"titleImage"} alt="logoNoBg.png" onClick={() => navigate("/")}/>
+        <img src={title2} className={"titleImage"} alt="logoNoBg.png" onClick={() => navigate("/")}/>
       </Carousel.Item>
 
       <Carousel.Item>
-        <img src={doc} className={"titleImage"} alt="logoNoBg.png" onClick={() => navigate("/")}/>
+        <img src={coffee} className={"titleImage"} alt="logoNoBg.png" onClick={() => navigate("/")}/>
       </Carousel.Item>
+
 
       <Carousel.Item>
         <img src={peeling} className={"titleImage"} alt="logoNoBg.png" onClick={() => navigate("/")}/>
@@ -56,6 +63,7 @@ const CarouselHome: React.FC = () => {
           </h4>
         </div>
       </Carousel.Item>
+
     </Carousel>
   );
 }
