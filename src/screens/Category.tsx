@@ -1,7 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 
 const Category: React.FC = () => {
+    const navigate = useNavigate();
+
+
     return (
         <div style={{ marginTop: "80px" }} className='container pb-6' >
             <h1 className='d-flex justify-content-center align-items-center' style={{ fontFamily: "Montserrat, sans-serif", fontStyle: "normal", fontWeight: "400", color: "#c29a44", textAlign: "center" }}>
@@ -15,7 +18,7 @@ const Category: React.FC = () => {
                                 <img src={service.imageUrl} className="card-img-top" alt={service.title} />
                             </Link>
                             <div className="description card-body">
-                                <h4 className="card-title">{service.title}</h4>
+                                <h4 style={{cursor: "pointer"}} className="card-title" onClick={() => navigate(service.link)}>{service.title}</h4>
                                 <Link to={service.link} className="ReadMore " style={{ backgroundColor: "pink", color: "black" }}>Read More</Link>
                             </div>
                         </div>
