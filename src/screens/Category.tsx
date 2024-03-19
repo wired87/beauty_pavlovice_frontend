@@ -1,5 +1,11 @@
 import React from 'react';
 import {Link, useNavigate} from 'react-router-dom';
+import Wimper from '../assets/images/Wi.webp'
+import Massage from "../assets/images/massage.webp"
+import Peeling from "../assets/images/peeling.webp"
+import Hautreinigung from "../assets/images/Hautreinigung3.webp"
+import Kosmetikbehandlung from "../assets/images/Kosmetikbehandlungen1.webp"
+
 
 const Category: React.FC = () => {
     const navigate = useNavigate();
@@ -15,7 +21,7 @@ const Category: React.FC = () => {
                     <div key={index} className="col-md-4 mt-2 d-flex justify-content-center align-items-center">
                         <div style={{ marginBottom: "20%" }} className="ui-card d-flex justify-content-center align-items-center rounded">
                             <Link to={service.link}>
-                                <img src={service.imageUrl} className="card-img-top" alt={service.title} />
+                                <img src={service.imageUrl} style={{}} className="card-img-top" alt={service.title} />
                             </Link>
                             <div className="description card-body">
                                 <h4 style={{cursor: "pointer"}} className="card-title" onClick={() => navigate(service.link)}>{service.title}</h4>
@@ -32,27 +38,27 @@ const Category: React.FC = () => {
 const services = [
     {
         title: "Wimpernverlängerung",
-        imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3Revbq9e2fgNWAcDgKP-C0nEA0sV3D9Wd5A&usqp=CAU",
+        imageUrl: Wimper,
         link: "/product/Wimpernverlängerung"
     },
     {
         title: "Gesichtsmassage",
-        imageUrl: "https://media.dm-static.com/image/upload/q_auto:eco,f_auto/content/rootpage-dm-shop-de-de/resource/image/1475790/landscape/800/562/77ae891bc97467314452953ffb955695/9052F736DD74EAE3BC8B2771AE9F3037/gesichtsmassage-aufmacher-1.jpg",
+        imageUrl: Massage,
         link: "/product/Gesichtsmassage"
     },
     {
         title: "Peeling",
-        imageUrl: "https://www.koruhastanesi.com/images/haber/main/what-is-chemical-peeling-3842.webp",
+        imageUrl: Peeling,
         link: "/product/Peeling"
     },
     {
         title: "Professionele Hautreinigung",
-        imageUrl: "https://noahklinik-cosmetics.de/wp-content/uploads/2024/01/hautreinigung.jpg",
+        imageUrl: Hautreinigung,
         link: "/product/Hautreinigung"
     },
     {
         title: "Kosmetikbehandlungen",
-        imageUrl: "https://www.esthetic-concept-heilbronn.de/upload/large/kosmetikbehandlungen_large_KXJF9z3Nr3.jpg",
+        imageUrl: Kosmetikbehandlung,
         link: "/product/Kosmetikbehandlungen"
     }
 ];
