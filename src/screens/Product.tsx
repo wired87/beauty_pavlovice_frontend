@@ -87,7 +87,7 @@ let allCategories = [
     {
         id: 4,
         name: 'Hautreinigung',
-        tile: 'Professionele Hautreinigung',
+        tile: 'Professionelle Hautreinigung',
         image: Hautering,
     }
 ]

@@ -52,7 +52,7 @@ const services = [
         link: "/product/Peeling"
     },
     {
-        title: "Professionele Hautreinigung",
+        title: "Professionelle Hautreinigung",
         imageUrl: Hautreinigung,
         link: "/product/Hautreinigung"
     },
