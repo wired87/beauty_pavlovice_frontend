@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import Wimper from '../assets/images/Wi.webp'
 import Massage from "../assets/images/massage.webp"
 import Peeling from "../assets/images/peeling.webp"
-import Hautreinigung from "../assets/images/Hautreinigung3.webp"
 import Kosmetikbehandlung from "../assets/images/Kosmetikbehandlungen1.webp"
+import hautereinigung from "../assets/images/Phautreinigung1.webp"
 
 
 const Category: React.FC = () => {
@@ -50,7 +50,7 @@ const services = [
     },
     {
         title: "Professionele Hautreinigung",
-        imageUrl: Hautreinigung,
+        imageUrl: hautereinigung,
         link: "/product/Hautreinigung"
     },
     {
