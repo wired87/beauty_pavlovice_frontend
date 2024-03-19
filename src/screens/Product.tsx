@@ -1,7 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { apiServices } from '../services/api.services';
-
+import wimper from "../assets/images/Wi.webp"
+import Wimpe1 from "../assets/images/Wimpern1.jpg"
+import wimper2 from "../assets/images/Wimpern2.jpg"
+import wimper3 from "../assets/images/Wimpern3.jpg"
+import wimper4 from "../assets/images/Wimpernverlängerung.jpg"
+import massage from "../assets/images/massage.webp"
+import peeling from "../assets/images/peeling.webp"
+import Hautering from "../assets/images/Hautreinigung2.webp"
+import Kosmetikbehandlungen from "../assets/images/Kosmetikbehandlungen1.webp"
+import Kosmetikbehandlungen4 from "../assets/images/Kosmetikbehandlungen4.webp"
+import Kosmetikbehandlungen2 from "../assets/images/Kosmetik Behandlungen 3.webp"
 // Define interface for the item structure
 interface ServiceItem {
     id: string;
@@ -18,19 +28,19 @@ let allCategories = [
         categories: ["Klassisch 1:1 Technik", "2D-3D Volumen", "4D-5D Volumen"],
         sections: [
             {
-                imageUrl: "https://image.jimcdn.com/app/cms/image/transf/dimension=1920x400:format=jpg/path/sb824aac12c92fde5/image/i0c2b2cd44a023eb9/version/1630505161/image.jpg",
+                imageUrl: wimper4,
                 title: "Klassisch (1:1 Technik)",
                 sectionColor: '#F3E1E1',
                 index: [0, 1, 2, 3, 4],
             },
             {
-                imageUrl: "https://www.wimpern-traum.de/wp-content/uploads/2017/08/Fotolia_123548392_Subscription_Monthly_M_1-1.jpg",
+                imageUrl: Wimpe1,
                 title: "2D-3D Volumen",
                 index: [5, 6, 7, 8, 9],
                 sectionColor: '#F6F5F5',
             },
             {
-                imageUrl: "https://blinklashclub.com/wp-content/uploads/2021/03/5D-Extension.jpg",
+                imageUrl: wimper2,
                 title: "4D-5D Volumen",
                 index: [10, 11, 12, 13, 14, 15, 16, 17, 18],
                 sectionColor: '#F3E1E1',
@@ -43,20 +53,20 @@ let allCategories = [
         name: 'Kosmetikbehandlungen',
         sections: [
             {
-                imageUrl: "https://png.pngtree.com/thumb_back/fw800/background/20230425/pngtree-various-cosmetics-and-makeup-products-lay-out-on-a-table-image_2512968.jpg",
+                imageUrl: Kosmetikbehandlungen,
                 title: "Kosmetikbehandlungen",
                 sectionColor: '#F6F5F5',
                 index: []
                 // index: [0, 2, 3, 4]
             },
             {
-                imageUrl: "https://media.istockphoto.com/id/1453524892/photo/female-scientist-looking-under-microscope-and-using-laptop-in-a-laboratory.webp?b=1&s=170667a&w=0&k=20&c=f6ITpViA6q4W56XB0X2whl3LTxIHf6f1EF-c3FQRRas=",
+                imageUrl: Kosmetikbehandlungen4,
                 title: "Is Clinical Behandlungen",
                 sectionColor: '#F3E1E1',
                 index: [0, 1, 2, 3]
             },
             {
-                imageUrl: "https://kosmetik-driller.de/wp-content/uploads/2020/01/Kosmetik_Driller_Kosmetikstudio_Bruchsal-167.jpg",
+                imageUrl: Kosmetikbehandlungen2,
                 title: "Apparative Kosmetik Behandlungen",
                 sectionColor: '#F6F5F5',
                 index: [4, 5, 6, 7, 8]
@@ -67,19 +77,19 @@ let allCategories = [
         id: 3,
         name: 'Gesichtsmassage',
         tile: 'Gesichtsmassage (Gesicht,Hals,Dekolleté)',
-        image: 'https://www.fisioterapiaamilano.it/wp-content/uploads/2019/10/massaggio-anti-age.jpg',
+        image: massage,
     },
     {
         id: 4,
         name: 'Peeling',
         tile: 'Peeling',
-        image: 'https://media.istockphoto.com/id/1399469980/photo/close-up-portrait-of-anorganic-facial-mask-application-at-spa-salon-facial-treatment-skin.webp?b=1&s=170667a&w=0&k=20&c=509pRCOT3S415mfR9XZz9wm7J0Nt9IdndYgd2YZ0mHQ=',
+        image: peeling,
     },
     {
         id: 4,
         name: 'Hautreinigung',
         tile: 'Professionele Hautreinigung',
-        image: 'https://www.top-beauty-center.de/img/hydro%20facial.jpeg',
+        image: Hautering,
     }
 ]
 
@@ -162,7 +172,7 @@ const Product: React.FC = () => {
                         <div style={{ backgroundColor: "#F6F5F5" }} className={`row align-items-center justify-content-evenly p-4 mt-5`}>
                             <div className='col-md-6 col-sm-12'>
                                 <img
-                                    src='https://www.beautiful-pearl.de/images/Wimpern_gr.jpg'
+                                    src={wimper}
                                     style={{
                                         maxWidth: "100%",
                                         height: "auto",
