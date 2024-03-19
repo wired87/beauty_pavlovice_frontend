@@ -47,17 +47,19 @@ const OpeningTimeMain: React.FC = (
           <div className="col-sm-4"></div>
           <div className="col-sm-4 ">
             <div className="business-hours opening-hours  ">
-              <h2 className="title ">Opening Hours</h2>
+              <h2 className="title ">Öffnungszeiten</h2>
+              <ul style={{listStyle: "none", flexDirection: "column", textAlign: "start"}} className={"flexStart"}>
               {openingTimeBlock01.map((item) => (
-                <li key={item.day} className="text-white">
+                <li key={item.day} className="text-white openingLi">
                   {item.day} <span className="pull-right p-1 flex-row">{time}</span>
                 </li>
               ))}
               {openingTimeBlock02.map((item) => (
-                <li key={item.day} className="text-white">
+                <li key={item.day} className="text-white openingLi">
                   {item.day} <span className="pull-right p-1 flex-row">{item.time || time}</span>
                 </li>
               ))}
+              </ul>
             </div>
           </div>
         </div>

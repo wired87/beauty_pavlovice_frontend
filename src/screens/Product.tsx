@@ -20,7 +20,7 @@ let allCategories = [
             {
                 imageUrl: "https://image.jimcdn.com/app/cms/image/transf/dimension=1920x400:format=jpg/path/sb824aac12c92fde5/image/i0c2b2cd44a023eb9/version/1630505161/image.jpg",
                 title: "Klassisch (1:1 Technik)",
-                sectionColor: '#F3E1E1',
+                sectionColor: 'rgb(224,213,175)',
                 index: [0, 1, 2, 3, 4],
             },
             {
@@ -33,7 +33,7 @@ let allCategories = [
                 imageUrl: "https://blinklashclub.com/wp-content/uploads/2021/03/5D-Extension.jpg",
                 title: "4D-5D Volumen",
                 index: [10, 11, 12, 13, 14, 15, 16, 17, 18],
-                sectionColor: '#F3E1E1',
+                sectionColor: 'rgb(224,213,175)',
             }
         ],
     },
@@ -52,7 +52,7 @@ let allCategories = [
             {
                 imageUrl: "https://media.istockphoto.com/id/1453524892/photo/female-scientist-looking-under-microscope-and-using-laptop-in-a-laboratory.webp?b=1&s=170667a&w=0&k=20&c=f6ITpViA6q4W56XB0X2whl3LTxIHf6f1EF-c3FQRRas=",
                 title: "Is Clinical Behandlungen",
-                sectionColor: '#F3E1E1',
+                sectionColor: 'rgb(224,213,175)',
                 index: [0, 1, 2, 3]
             },
             {
@@ -176,10 +176,11 @@ const Product: React.FC = () => {
                                 {find.description && <p style={{ fontFamily: "Cormorant Garamond, serif", color: "black" }} className='fs-5'>{find.description}</p>}
                                 {find.categories && (
                                     <>
-                                        <p style={{ fontFamily: "Cormorant Garamond, serif", fontStyle: "italic", fontWeight: "bold" }} className='fs-5'>We have all these:</p>
+                                        <p style={{ fontFamily: "Cormorant Garamond, serif", fontStyle: "italic", fontWeight: "bold" }} className='fs-5'>Unser Angebot umfasst folgende Services:</p>
                                         {find.categories.map((category, index) => (
                                             <p style={{ fontFamily: "Cormorant Garamond, serif", color: "black" }} key={index} className='mb-2 fs-5'>{category}</p>
                                         ))}
+                                        <button style={{ backgroundColor: "black", color: "white", border: "none" }} className="fw-bold mt-5 btn w-50" onClick={handleBookNow}>Termin vereinbaren</button>
                                     </>
                                 )}
                             </div>
@@ -208,13 +209,12 @@ const Product: React.FC = () => {
                                             <>
                                                 {section.index.map((index) => (
                                                     <div className='d-flex align-items-center justify-content-between mb-1'>
-                                                        <p style={{ fontFamily: "Cormorant Garamond, serif", color: "black" }} key={services[index].id} className='category_items m-0 '>
+                                                        <p style={{ fontFamily: "Cormorant Garamond, serif", color: "black", fontStyle: "italic" }} key={services[index].id}  className='category_items m-0 '>
                                                             {services[index].title}
                                                         </p>
                                                         <span style={{ display: "flex", flexWrap: "wrap", overflow: "hidden", fontFamily: "roboto,sanserif" }} className=' text-dark '>{services[index].price} &euro;</span>
                                                     </div>
                                                 ))}
-                                                <button style={{ backgroundColor: "black", color: "white", border: "none" }} className="fw-bold mt-5 btn w-50" onClick={handleBookNow}>Termin vereinbaren</button>
                                             </>
                                         ) : null}
                                     </div>
