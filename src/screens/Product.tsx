@@ -30,7 +30,7 @@ let allCategories = [
             {
                 imageUrl: wimper4,
                 title: "Klassisch (1:1 Technik)",
-                sectionColor: '#F3E1E1',
+                sectionColor: 'rgb(224,213,175)',
                 index: [0, 1, 2, 3, 4],
             },
             {
@@ -43,7 +43,7 @@ let allCategories = [
                 imageUrl: wimper2,
                 title: "4D-5D Volumen",
                 index: [10, 11, 12, 13, 14, 15, 16, 17, 18],
-                sectionColor: '#F3E1E1',
+                sectionColor: 'rgb(224,213,175)',
             }
         ],
     },
@@ -62,7 +62,7 @@ let allCategories = [
             {
                 imageUrl: Kosmetikbehandlungen4,
                 title: "Is Clinical Behandlungen",
-                sectionColor: '#F3E1E1',
+                sectionColor: 'rgb(224,213,175)',
                 index: [0, 1, 2, 3]
             },
             {
@@ -186,10 +186,11 @@ const Product: React.FC = () => {
                                 {find.description && <p style={{ fontFamily: "Cormorant Garamond, serif", color: "black" }} className='fs-5'>{find.description}</p>}
                                 {find.categories && (
                                     <>
-                                        <p style={{ fontFamily: "Cormorant Garamond, serif", fontStyle: "italic", fontWeight: "bold" }} className='fs-5'>We have all these:</p>
+                                        <p style={{ fontFamily: "Cormorant Garamond, serif", fontStyle: "italic", fontWeight: "bold" }} className='fs-5'>Unser Angebot umfasst folgende Services:</p>
                                         {find.categories.map((category, index) => (
                                             <p style={{ fontFamily: "Cormorant Garamond, serif", color: "black" }} key={index} className='mb-2 fs-5'>{category}</p>
                                         ))}
+                                        <button style={{ backgroundColor: "black", color: "white", border: "none" }} className="fw-bold mt-5 btn w-50" onClick={handleBookNow}>Termin vereinbaren</button>
                                     </>
                                 )}
                             </div>
@@ -218,13 +219,12 @@ const Product: React.FC = () => {
                                             <>
                                                 {section.index.map((index) => (
                                                     <div className='d-flex align-items-center justify-content-between mb-1'>
-                                                        <p style={{ fontFamily: "Cormorant Garamond, serif", color: "black" }} key={services[index].id} className='category_items m-0 '>
+                                                        <p style={{ fontFamily: "Cormorant Garamond, serif", color: "black", fontStyle: "italic" }} key={services[index].id}  className='category_items m-0 '>
                                                             {services[index].title}
                                                         </p>
                                                         <span style={{ display: "flex", flexWrap: "wrap", overflow: "hidden", fontFamily: "roboto,sanserif" }} className=' text-dark '>{services[index].price} &euro;</span>
                                                     </div>
                                                 ))}
-                                                <button style={{ backgroundColor: "black", color: "white", border: "none" }} className="fw-bold mt-5 btn w-50" onClick={handleBookNow}>Termin vereinbaren</button>
                                             </>
                                         ) : null}
                                     </div>

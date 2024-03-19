@@ -57,10 +57,17 @@ const Home: React.FC = () => {
           <h3 className="sub_address">
             Reisewitzer Str. 20 <br />
             01159 Dresden <br />
-            Tel: +49 152 52197474 <br/>
-            <br/>
-            oder
           </h3>
+          <p>
+            Ruf uns an unter
+          </p>
+          <h3 className="sub_address">
+            +49 152 52197474 <br/>
+          </h3>
+            <br/>
+          <p>
+            oder
+          </p>
           <button className="sub_address text-bold bg-dark text-white" onClick={() => changeScreen("/termin")} >
             Vereinbare einen Termin
           </button>

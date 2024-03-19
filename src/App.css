@@ -59,7 +59,9 @@
   padding-left: 5px;
   border-left: 4px solid #ffac0c;
 }
-
+.openingLi {
+  padding: 10px 0
+}
 .business-hours li {
   color: #888;
   line-height: 30px;
@@ -108,8 +110,8 @@
 .sub_address {
   font-size: 24px;
   font-family: "Cormorant Garamond", serif;
-  font-style: italic;
-  margin-top: 10px;
+  font-style: normal;
+
 }
 
 .wrapper {
