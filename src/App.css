@@ -174,8 +174,8 @@ img {
   font-weight: 700;
   font-size: 28px;
   margin: 0 0 20px;
-  transform: translateY(30px);
-  opacity: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-style: normal;
   transition: all 0.3s ease-out;
 
 }

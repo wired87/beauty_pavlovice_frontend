@@ -21,7 +21,7 @@ const Category: React.FC = () => {
                     <div key={index} className="col-md-4 mt-2 d-flex justify-content-center align-items-center">
                         <div style={{ marginBottom: "20%" }} className="ui-card d-flex justify-content-center align-items-center rounded">
                             <Link to={service.link}>
-                                <img src={service.imageUrl} style={{}} className="card-img-top" alt={service.title} />
+                                <img src={service.imageUrl} style={{objectFit: "cover"}} className="card-img-top" alt={service.title} />
                             </Link>
                             <div className="description card-body">
                                 <h4 style={{cursor: "pointer"}} className="card-title" onClick={() => navigate(service.link)}>{service.title}</h4>

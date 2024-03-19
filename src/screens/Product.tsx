@@ -4,7 +4,6 @@ import { apiServices } from '../services/api.services';
 import wimper from "../assets/images/Wi.webp"
 import Wimpe1 from "../assets/images/Wimpern1.jpg"
 import wimper2 from "../assets/images/Wimpern2.jpg"
-import wimper3 from "../assets/images/Wimpern3.jpg"
 import wimper4 from "../assets/images/Wimpernverlängerung.jpg"
 import massage from "../assets/images/massage.webp"
 import peeling from "../assets/images/peeling.webp"
