@@ -44,10 +44,10 @@ function AppointmentForm(): JSX.Element {
   const [minDate, setMinDate] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
   const [availableTimes, setAvailableTimes] = useState<string[]>([]);
-  const shopOpeningTime: string = "08:00";
-  const shopClosingTime: string = "17:00";
-  const today = new Date();
 
+  const shopOpeningTime: string = "08:00";
+  const shopClosingTime: string = "16:00";
+  const today = new Date();
 
   useEffect(() => {
     getBookedAppointments()
@@ -305,16 +305,20 @@ function AppointmentForm(): JSX.Element {
 
             <br />
 
-            <label className='text-dark' htmlFor="time">Uhrzeit</label>
-            <div style={{ maxHeight: '200px', overflowY: 'auto', display: "flex", alignItems: 'center', flexDirection: "column" }} className=''>
-              {availableTimes?.map((e, i) => (
-                <p onClick={() => setFormData({ ...formData, time: e })}
-                  style={{ justifyContent: "center", borderRadius: "100px", backgroundColor: e == formData.time ? 'green' : '' }}
-                  key={i} className='btn btn-outline-success d-flex flex-col w-50'>
-                  {e}
-                </p>
-              ))}
-            </div>
+            {formData?.date ?
+              <>
+                <label className='text-dark' htmlFor="time">Uhrzeit</label>
+                <div style={{ maxHeight: '200px', overflowY: 'auto', display: "flex", alignItems: 'center', flexDirection: "column" }} className=''>
+                  {availableTimes?.map((e, i) => (
+                    <p onClick={() => setFormData({ ...formData, time: e })}
+                      style={{ justifyContent: "center", borderRadius: "100px", backgroundColor: e == formData.time ? 'green' : '' }}
+                      key={i} className='btn btn-outline-success d-flex flex-col w-50'>
+                      {e}
+                    </p>
+                  ))}
+                </div>
+              </> : null
+            }
             <fieldset>
               <label className='text-dark' htmlFor="name">Zusätzliche Informationen?</label>
               <input type="text" id="information" name="information" placeholder="" value={formData.information} onChange={handleChange} />
