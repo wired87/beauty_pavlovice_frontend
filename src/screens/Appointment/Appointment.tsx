@@ -76,7 +76,7 @@ function AppointmentForm(): JSX.Element {
       let converted = formData?.date?.toISOString().split('T')[0];
 
       const selectedTime = moment(converted + "T" + formData.time);
-      const formattedDate = moment(selectedTime).format("YYYY-MM-DDTHH:mm:ssZ");
+      const formattedDate = moment(selectedTime).format("YYYY-MM-DDTHH:mm");
 
       let data = {
         ...formData,
@@ -266,7 +266,7 @@ function AppointmentForm(): JSX.Element {
         </div>
         <div id="body_header">
           <p style={{ fontFamily: "Montserrat, sans-serif", fontWeight: "300", fontSize: 16 }} data-aos="fade-right">
-            Mo - Fr 09:00 - 17:00 Uhr  <br/>
+            Mo - Fr 09:00 - 17:00 Uhr  <br />
             Samstag nach Vereinbarung
           </p>
         </div>
