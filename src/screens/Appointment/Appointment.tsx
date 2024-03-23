@@ -147,7 +147,9 @@ function AppointmentForm(): JSX.Element {
   }
 
   const getTodayAppoinments = useCallback(() => {
-    let filter = allAppointments.filter(f => f?.date == formData.date?.toString())
+    const formattedDate = moment(formData.date).format('YYYY-MM-DD');
+
+    let filter = allAppointments.filter(f => f?.date == formattedDate)
     setBookedAppointment(filter)
     return filter;
   }, [formData?.date])
@@ -219,20 +221,23 @@ function AppointmentForm(): JSX.Element {
     });
   };
 
-
   // Update available time slots based on selected date
   useEffect(() => {
     // Generate time slots between shop opening and closing time
     let availableTimeSlots = generateTimeSlots();
     // Filter out booked time slots for the selected date
     const bookedAppointmentsForDate = bookedAppoinment.filter(appointment => {
+      const formattedDate = moment(formData.date).format('YYYY-MM-DD');
+
       const date = new Date(appointment.date).toISOString().split('T')[0];
-      return date === formData?.date?.toString();
+      return date === formattedDate
     });
+
     // Filter out booked time slots
     bookedAppointmentsForDate.forEach(appointment => {
       availableTimeSlots = filterBookedTimes(availableTimeSlots, appointment);
     });
+
     // Update available time slots state
     setAvailableTimes(availableTimeSlots);
   }, [formData?.date, bookedAppoinment]);
