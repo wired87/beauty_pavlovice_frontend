@@ -8,6 +8,27 @@ import CircularProgress from '@mui/material/CircularProgress';
 import "react-datepicker/dist/react-datepicker.css";
 // import Select from 'react-select';
 
+
+let openingHours = [
+  "08:00",
+  "08:30",
+  "09:00",
+  "08:30",
+  "10:00",
+  "10:30",
+  "11:00",
+  "11:30",
+  "12:00",
+  "12:30",
+  "13:30",
+  "14:00",
+  "14:30",
+  "15:00",
+  "15:30",
+  "16:00",
+  "16:30",
+]
+
 interface FormData {
   lastName: string;
   serviceID: string;
@@ -46,7 +67,7 @@ function AppointmentForm(): JSX.Element {
   const [availableTimes, setAvailableTimes] = useState<string[]>([]);
 
   const shopOpeningTime: string = "08:00";
-  const shopClosingTime: string = "16:00";
+  const shopClosingTime: string = "16:30";
   const today = new Date();
 
   useEffect(() => {
@@ -54,6 +75,12 @@ function AppointmentForm(): JSX.Element {
       .then(() => console.log("Collect all booked appointments..."));
     setMinDate(calculateMinDate());
   }, []);
+
+
+  const extractTime = () => {
+
+  }
+
 
 
   useEffect(() => {
@@ -74,9 +101,13 @@ function AppointmentForm(): JSX.Element {
 
     if (isAvailable == 1) {
       let converted = formData?.date?.toISOString().split('T')[0];
+      console.log("CONVERTED:", converted);
 
       const selectedTime = moment(converted + "T" + formData.time);
+      console.log("SELECTED TIME:", selectedTime);
+
       const formattedDate = moment(selectedTime).format("YYYY-MM-DDTHH:mm");
+      console.log("FORMATTED DATE:", formattedDate);
 
       let data = {
         ...formData,
@@ -127,6 +158,7 @@ function AppointmentForm(): JSX.Element {
       const response = await apiServices.getAllAppointment();
       if (Array.isArray(response.data?.message)) {
         const data = response.data?.message;
+        console.log("BOOKED APPOINTMENTS RECEIVED:", data);
         const newData: Appointment[] = data.map((item: any) => {
           const startTime = moment(item.start).utcOffset(item.start).format('HH:mm');
           const endTime = moment(item.end).utcOffset(item.end).format('HH:mm');
@@ -281,6 +313,8 @@ function AppointmentForm(): JSX.Element {
             <input type="text" id="lastName" name="lastName" placeholder="Enter your Name" required value={formData.lastName} onChange={handleChange} />
             <label className='text-dark' htmlFor="tel">Mobil</label>
             <input type="tel" id="contactTel" placeholder="Include country code" name="contactTel" value={formData.contactTel} onChange={handleChange} />
+            <label className='text-dark' htmlFor="tel">E-Mail</label>
+            <input type="email" id="contactEmail" placeholder="Zur Bestätigung des Termins ( freiwillig )" name="contactEmail" value={formData.contactEmail} onChange={handleChange} />
           </fieldset>
           <fieldset>
             <label className='text-dark' htmlFor="appointment_for">Service</label>
