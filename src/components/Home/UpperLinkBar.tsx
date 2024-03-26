@@ -10,7 +10,7 @@ import { IoCloseOutline } from "react-icons/io5";
 
 // STRINGS
 const title:string = "Buche einen Termin!";
-const href: string = "#";
+const href: string = "termin";
 
 const UpperLinkBar: React.FC = () => {
 

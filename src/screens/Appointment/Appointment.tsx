@@ -188,7 +188,7 @@ function AppointmentForm(): JSX.Element {
 
 
   const getAvailability = useCallback(() => {
-    if (!formData.time || !formData.date) return 0; // If no time or date selected, return 0 availability
+    if (!formData.time || !formData.date) return 0;
 
     // Assuming time is in 'HH:mm' format
     const selectedStartTime = moment(formData.date + "T" + formData.time);
