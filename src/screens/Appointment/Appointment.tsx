@@ -73,7 +73,7 @@ function AppointmentForm(): JSX.Element {
     let isAvailable = getAvailability();
 
     if (isAvailable == 1) {
-      let converted = formData?.date?.toISOString().split('T')[0];
+      const converted = moment(formData?.date).format("YYYY-MM-DD");
 
       const selectedTime = moment(converted + "T" + formData.time);
       const formattedDate = moment(selectedTime).format("YYYY-MM-DDTHH:mm");
@@ -83,9 +83,7 @@ function AppointmentForm(): JSX.Element {
         startTime: formattedDate
       }
       try {
-        console.log("Data sent:", data);
         let response = await apiServices.postAppointment({ data })
-        console.log("Appointment Response received", response)
         if (response?.data?.status === 200) {
           Swal.fire({
             title: "Success",
@@ -128,7 +126,7 @@ function AppointmentForm(): JSX.Element {
       if (Array.isArray(response.data?.message)) {
         const data = response.data?.message;
         const newData: Appointment[] = data.map((item: any) => {
-          const startTime = moment(item.start).utcOffset(item.start).format('HH:mm');
+          const startTime = moment(item.start).subtract(30, 'minutes').utcOffset(item.start).format('HH:mm');
           const endTime = moment(item.end).utcOffset(item.end).format('HH:mm');
           const date = moment(item.start).utcOffset(item.start).format('YYYY-MM-DD');
 
@@ -242,7 +240,6 @@ function AppointmentForm(): JSX.Element {
     setAvailableTimes(availableTimeSlots);
   }, [formData?.date, bookedAppoinment]);
 
-
   // Calculate the minimum date (disable dates before today)
   const calculateMinDate = (): string => {
     const today = new Date();
@@ -256,7 +253,6 @@ function AppointmentForm(): JSX.Element {
     const day = date.getDay();
     return day !== 0 && day !== 6; // 0 is Sunday, 6 is Saturday
   };
-
 
   const disabledDates = (date: Date) => {
     return isWeekend(date);
