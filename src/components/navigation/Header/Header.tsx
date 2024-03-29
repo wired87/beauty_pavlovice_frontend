@@ -3,13 +3,13 @@ import React, { memo, useContext } from "react";
 import "../../../styles/main.css";
 import "../../../styles/coponentStyles/nav.css";
 import "../../../styles/coponentStyles/buttons.css";
-import logoNoBg from "../../../assets/images/logoNoBg.png";
+import logoNoBg from "../../../assets/images/logo-nobg.png";
 import { WindowWidth } from "../../../functions/WindowWidth";
 import OffcanvasBootstrap from "../../Offcanvas";
 import HeaderItems from "./HeaderItems";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { MainContext } from "../../../Context/MainContext";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Header: React.FC = () => {
 
@@ -33,7 +33,7 @@ const Header: React.FC = () => {
   return (
     <>
       <header id="home" className={"headerContainer d-flex justify-content-center align-items-center flex-row "}>
-          <img src={logoNoBg} className={"logo"} alt="logoNoBg.png" onClick={() => navigate("/")}/>
+        <img src={logoNoBg} className={"logo"} alt="logoNoBg.png" onClick={() => navigate("/")} />
         {
           transformHeader()
         }
