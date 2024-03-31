@@ -11,6 +11,7 @@ const Imprint: React.FC = () => {
           Reisewitzer Str. 20 01159 Dresden <br/>
           Telefon: +4915252197474 <br/>
           E-Mail: beauty.bar.pavlovic@gmail.com <br/>
+
         </p>
       </div>
     </div>
