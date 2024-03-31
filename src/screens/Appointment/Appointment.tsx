@@ -70,6 +70,12 @@ function AppointmentForm(): JSX.Element {
   const shopClosingTime: string = "16:30";
   const today = new Date();
 
+  const [title, setTitle] = useState("Termin buchen");
+
+  useEffect(() => {
+    document.title = title;
+  }, [title]);
+
   useEffect(() => {
     getBookedAppointments()
       .then(() => console.log("Collect all booked appointments..."));

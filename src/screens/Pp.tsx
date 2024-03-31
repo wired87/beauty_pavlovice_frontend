@@ -1,7 +1,13 @@
 
 import "../styles/main.css";
+import {useEffect, useState} from "react";
 
 function PrivacyPolicy() {
+  const [title, setTitle] = useState("Datenschutz");
+
+  useEffect(() => {
+    document.title = title;
+  }, [title]);
 
   return (
     <div className="privacy-main pinkBg">

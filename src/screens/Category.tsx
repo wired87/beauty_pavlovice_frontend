@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Wimper from '../assets/images/Wi.webp'
 import Massage from "../assets/images/massage.webp"
@@ -10,7 +10,11 @@ import hautereinigung from "../assets/images/Phautreinigung1.webp"
 const Category: React.FC = () => {
     const navigate = useNavigate();
 
+    const [title, setTitle] = useState("Kategorien");
 
+    useEffect(() => {
+        document.title = title;
+    }, [title]);
     return (
         <div style={{ marginTop: "80px" }} className='container pb-6' >
             <h1 className='d-flex justify-content-center align-items-center' style={{ fontFamily: "Montserrat, sans-serif", fontStyle: "normal", fontWeight: "400", color: "#c29a44", textAlign: "center" }}>

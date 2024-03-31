@@ -1,7 +1,13 @@
-import React, {memo} from "react";
+import React, {memo, useEffect, useState} from "react";
 import "../styles/main.css";
 
 const Imprint: React.FC = () => {
+  const [title, setTitle] = useState("Imprint");
+
+  useEffect(() => {
+    document.title = title;
+  }, [title]);
+
   return(
     <div className="privacy-main pinkBg">
       <div className="privacy-text-field pinkBg">

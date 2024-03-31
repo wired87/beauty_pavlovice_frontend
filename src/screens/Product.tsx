@@ -101,6 +101,12 @@ const Product: React.FC = () => {
 
     let find = allCategories?.find(e => e.name == productName)
 
+    const [title, setTitle] = useState("Produkt");
+
+    useEffect(() => {
+        document.title = title;
+    }, [title]);
+
     useEffect(() => {
         if (productName) {
             getProductDetails();
