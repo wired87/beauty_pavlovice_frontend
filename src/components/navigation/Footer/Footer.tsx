@@ -31,7 +31,8 @@ const Footer: React.FC = () => {
         <li className="menu__item"><a className="menu__link" href="#">Home</a></li>
         <li className="menu__item"><a className="menu__link" href="/category">Services</a></li>
         <li className="menu__item"><a className="menu__link" href="/termin">Termin vereinbaren</a></li>
-        <li className="menu__item"><a className="menu__link" href="/imprint">Imprint</a></li>
+        <li className="menu__item"><a className="menu__link" href="/impressum">Impressum</a></li>
+        <li className="menu__item"><a className="menu__link" href="/datenschutz">Datenschutz</a></li>
       </ul>
       <p>&copy;Powered by Anastasia Pavlovic | Beauty Bar Pavlovic</p>
     </footer>

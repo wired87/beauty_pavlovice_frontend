@@ -14,6 +14,7 @@ import Category from './screens/Category';
 import Product from './screens/Product';
 import OpeningTimeMain from './components/Home/openingTime/OpeningTimeMain';
 import Imprint from "./screens/Imprint";
+import PrivacyPolicy from "./screens/Pp";
 
 const App: React.FC = () => {
   return (
@@ -29,7 +30,8 @@ const App: React.FC = () => {
             <Route path="category" element={<Category />} />
             <Route path="product/:productName" element={<Product />} />
             <Route path="/offnungszeiten" element={<OpeningTimeMain />} />
-            <Route path="/imprint" element={<Imprint />} />
+            <Route path="/impressum" element={<Imprint />} />
+            <Route path="/datenschutz" element={<PrivacyPolicy />} />
           </Routes>
           <Footer />
         </Router>
