@@ -6,7 +6,7 @@ const Imprint: React.FC = () => {
     <div className="privacy-main pinkBg">
       <div className="privacy-text-field pinkBg">
         <h4>Verantwortlicher: </h4>
-        <p>
+        <p style={{fontSize: 17}}>
           Anastasia Pavlovic <br/>
           Reisewitzer Str. 20 01159 Dresden <br/>
           Telefon: +4915252197474 <br/>
