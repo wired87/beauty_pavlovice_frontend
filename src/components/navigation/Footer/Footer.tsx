@@ -23,7 +23,7 @@ const Footer: React.FC = () => {
           <FontAwesomeIcon size="1x" icon={faEnvelope} />
 
         </a></li> */}
-        <li className="social-icon__item"><a className="social-icon__link" href="tel:+1234567890">
+        <li className="social-icon__item"><a className="social-icon__link" href="tel:+4915252197474">
           <FontAwesomeIcon size="1x" icon={faPhone} />
         </a></li>
       </ul>
